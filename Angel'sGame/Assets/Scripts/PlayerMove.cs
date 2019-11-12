@@ -26,18 +26,18 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             velocity += Vector3.down;
-            transform.rotation = Quaternion.Euler(-45, 0, 0);
+            transform.rotation = Quaternion.Euler(-135, 0, 0);
         }
         //move right or left
         if (Input.GetKey(KeyCode.A))
         {
             velocity += Vector3.left;
-            transform.rotation = Quaternion.Euler(0, 45, 0);
+            transform.rotation = Quaternion.Euler(0, 135, 0);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             velocity += Vector3.right;
-            transform.rotation = Quaternion.Euler(0, -135, 0);
+            transform.rotation = Quaternion.Euler(0, -45, 0);
         }
         //deceleration
         velocity *= dragForce;
