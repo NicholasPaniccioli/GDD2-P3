@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             velocity += Vector3.down;
-            transform.rotation = Quaternion.Euler(-45, 0, 0);
+            transform.rotation = Quaternion.Euler(-45, 180, 0);
         }
         //move right or left
         if (Input.GetKey(KeyCode.A))
