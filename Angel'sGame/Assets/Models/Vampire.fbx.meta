@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: b918e56339b48f04091b1e725b321153
+guid: bd274c147e8bc934eabbbb27efac88f4
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 770227e9f5a2b464eb4345159016ac62, type: 2}
+      name: VampireTheObj
+    second: {fileID: 2800000, guid: a724e7fa5610eb443b7d69e714611560, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
