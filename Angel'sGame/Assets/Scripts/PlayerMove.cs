@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private Vector3 velocity;
+    private GameObject dresden;
     [SerializeField]
     private float dragForce = 0.8f, maxSpeed;
 
@@ -12,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         velocity = Vector3.zero;
+        dresden = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -21,23 +23,23 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             velocity += Vector3.up;
-            transform.rotation = Quaternion.Euler(45, 0, 0);
+            dresden.transform.rotation = Quaternion.Euler(45, 0, 0);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             velocity += Vector3.down;
-            transform.rotation = Quaternion.Euler(-45, 0, 0);
+            dresden.transform.rotation = Quaternion.Euler(-45, 180, 0);
         }
         //move right or left
         if (Input.GetKey(KeyCode.A))
         {
             velocity += Vector3.left;
-            transform.rotation = Quaternion.Euler(0, 45, 0);
+            dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             velocity += Vector3.right;
-            transform.rotation = Quaternion.Euler(0, -45, 0);
+            dresden.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         //deceleration
         velocity *= dragForce;
