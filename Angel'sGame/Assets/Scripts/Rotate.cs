@@ -6,6 +6,8 @@ public class Rotate : MonoBehaviour
 {
     private bool debug;
     private GameObject staff;
+    private Vector3 velocity;
+
     // Start is called before the first frame update
     void Start()
     {
