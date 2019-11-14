@@ -23,12 +23,12 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             velocity += Vector3.up;
-            dresden.transform.rotation = Quaternion.Euler(45, 0, 0);
+            dresden.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             velocity += Vector3.down;
-            dresden.transform.rotation = Quaternion.Euler(-45, 180, 0);
+            dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         //move right or left
         if (Input.GetKey(KeyCode.A))
