@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
 
     // Subtract damage from health
     // If health goes below zero, die
-    void TakeDamage(float damage, float health)
+    public void TakeDamage(float damage, float health)
     {
         health -= damage;
 
@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        Debug.Log("Health: " + health);
     }
 
     // Play death animation and remove entity from screen
@@ -42,11 +43,12 @@ public class Health : MonoBehaviour
     {
         // play death animation
         // set active to false
+        Debug.Log("You died!");
         gameObject.SetActive(false);
     }
 
     // Heal the entity
-    void Heal(float hp, float health)
+    public void Heal(float hp)
     {
         health += hp;   // add hp to health
         
@@ -55,6 +57,8 @@ public class Health : MonoBehaviour
         {
             health = maxHealth; // set health equal to maxHealth, so it doesn't go past maxHealth
         }
+
+        Debug.Log("Health: " + health);
     }
 
 }
