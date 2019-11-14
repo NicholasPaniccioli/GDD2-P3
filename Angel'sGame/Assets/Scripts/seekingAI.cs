@@ -6,7 +6,7 @@ public class seekingAI : Vehicle
 {
     public GameObject dresden;
     public float range;
-    public Vector3 velocity;
+    private Vector3 speed;
     [SerializeField]
     private float dragForce = 0.8f;
 
@@ -27,11 +27,20 @@ public class seekingAI : Vehicle
         {
             //IDLE ANIMATION
         }
+        vehiclePosition = transform.position;
     }
 
     public override void CalculateSteeringForce()
     {
+        speed += Seek(dresden);
+        speed *= dragForce;
+        if (speed.magnitude <= 0.1)
+            //if the velocity vector is to small to be noticable, stop moving
+            speed = Vector3.zero;
 
+        //max velocity
+        speed = Vector3.ClampMagnitude(speed, maxSpeed);
+        transform.position += speed * Time.deltaTime;
     }
 
 }
