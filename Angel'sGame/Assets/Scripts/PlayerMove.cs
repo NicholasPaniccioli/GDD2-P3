@@ -6,7 +6,6 @@ public class PlayerMove : MonoBehaviour
 {
     private Vector3 velocity;
     private GameObject dresden;
-    public Rigidbody2D rbWallcollision;
 
     [SerializeField]
     private float dragForce = 0.8f, maxSpeed;
@@ -52,6 +51,5 @@ public class PlayerMove : MonoBehaviour
         //max velocity
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
         transform.position += velocity * Time.deltaTime;
-        rbWallcollision.velocity = new Vector2(0, 0);
     }
 }
