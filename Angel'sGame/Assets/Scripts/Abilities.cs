@@ -8,12 +8,15 @@ public class Abilities : MonoBehaviour
     ControlMeter controlMeter;
     private GameObject staff;
     public Vector3 fireBallVelocity;
+    public GameObject fireball;
+    private Vector2 target;
     // Start is called before the first frame update
     void Start()
     {
         health = gameObject.GetComponent<Health>();
         controlMeter = gameObject.GetComponent<ControlMeter>();
         staff = gameObject.transform.GetChild(0).gameObject;
+        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     // Update is called once per frame
@@ -26,15 +29,22 @@ public class Abilities : MonoBehaviour
             controlMeter.IncreaseControl(5f);   
         }
 
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    ShootFireball();
-        //}
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ShootFireball(fireball);
+        }
     }
 
     void ShootFireball(GameObject fireball)
     {
         GameObject newFireball = Instantiate(fireball, new Vector3(staff.GetComponent<Renderer>().bounds.center.x, staff.GetComponent<Renderer>().bounds.center.y), Quaternion.identity);
-        newFireball.transform.position += fireBallVelocity * Time.deltaTime;
+        int i = 100;
+        //while (i > 0)
+        //{
+        //    //newFireball.transform.position += fireBallVelocity * Time.deltaTime;
+        //    //transform.position = Vector2.MoveTowards(transform.position, target.position, )
+        //    i--;
+        //}
+        
     }
 }
