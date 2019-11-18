@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class seekingAI : Vehicle
+public class Vampire : Vehicle
 {
     public GameObject dresden;
     public float range;
