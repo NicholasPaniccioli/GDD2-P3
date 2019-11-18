@@ -22,7 +22,12 @@ public class Ghoul : Vehicle
         isOn = true;
     }
 
-
+    // Update is called once per frame
+    void Update()
+    {
+        CalculateSteeringForce();
+        vehiclePosition = transform.position;
+    }
 
     /// <summary>
     /// calculates the movement of the follower
@@ -60,7 +65,6 @@ public class Ghoul : Vehicle
                 wavepoint = 0;
             }
         }
-        transform.LookAt(path[wavepoint].transform);
 
         return Seek(path[currentPoint]);
     }
