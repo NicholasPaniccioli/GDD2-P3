@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerAttacc : MonoBehaviour {
 
-    [SerializeField]
     //  Explosion animation prefab
+    [SerializeField]
     private GameObject explosionInstance;
+    [SerializeField]
+    private GameObject CombatManagerObj;
+    private CombatManager combatManager;
     private GameObject staff;
     [SerializeField]
     private float coolDown = 1;
@@ -18,10 +21,18 @@ public class PlayerAttacc : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        //  Find CombatManagerObj
+        if (CombatManagerObj == null)
+            CombatManagerObj = GameObject.Find("CombatManager");
+        //  Error if it's not found
+        if(CombatManagerObj == null)
+            throw new UnassignedReferenceException("CombatManagerObj not assigned");
+        combatManager = CombatManagerObj.GetComponent<CombatManager>();
+
         //  This NEEDS an explosion reference
-        if(explosionInstance == null) {
+        if (explosionInstance == null)
             throw new UnassignedReferenceException("explosionInstance not assigned");
-        }
+
         //  Grab the staff's visual location
         staff = gameObject.transform.GetChild(0).gameObject;
         //  Cooldowns, YEET
