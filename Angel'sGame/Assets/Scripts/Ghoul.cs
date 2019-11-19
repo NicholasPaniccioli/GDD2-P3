@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ghoul : Enemy
 {
 
-    private Vector3 speed;
     public GameObject dresden;
     public GameObject[] path;
     int wavepoint;
@@ -36,20 +35,20 @@ public class Ghoul : Enemy
     {
         if (Target(dresden))
         {
-            speed += Seek(dresden);
+            velocity += Seek(dresden);
         }
         else
         {
-            speed += PathFollow(wavepoint);
+            velocity += PathFollow(wavepoint);
         }
-        speed *= dragForce;
-        if (speed.magnitude <= 0.1)
+        velocity *= dragForce;
+        if (velocity.magnitude <= 0.1)
             //if the velocity vector is to small to be noticable, stop moving
-            speed = Vector3.zero;
+            velocity = Vector3.zero;
 
         //max velocity
-        speed = Vector3.ClampMagnitude(speed, maxSpeed);
-        transform.position += speed * Time.deltaTime;
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        transform.position += velocity * Time.deltaTime;
     }
 
     public Vector3 PathFollow(int currentPoint)

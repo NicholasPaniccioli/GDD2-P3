@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
 
     // Subtract damage from health
     // If health goes below zero, die
-    public void TakeDamage(float damage, float health)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 

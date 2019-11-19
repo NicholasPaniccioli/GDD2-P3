@@ -6,7 +6,6 @@ public class Vampire : Enemy
 {
     public GameObject dresden;
     public float range;
-    private Vector3 speed;
     [SerializeField]
     private float dragForce = 0.8f;
 
@@ -32,15 +31,15 @@ public class Vampire : Enemy
 
     public override void CalculateSteeringForce()
     {
-        speed += Seek(dresden);
-        speed *= dragForce;
-        if (speed.magnitude <= 0.1)
+        velocity += Seek(dresden);
+        velocity *= dragForce;
+        if (velocity.magnitude <= 0.1)
             //if the velocity vector is to small to be noticable, stop moving
-            speed = Vector3.zero;
+            velocity = Vector3.zero;
 
         //max velocity
-        speed = Vector3.ClampMagnitude(speed, maxSpeed);
-        transform.position += speed * Time.deltaTime;
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        transform.position += velocity * Time.deltaTime;
     }
 
 }
