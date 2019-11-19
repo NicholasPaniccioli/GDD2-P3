@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghoul : Vehicle
+public class Ghoul : Enemy
 {
 
-    private Vector3 speed;
     public GameObject dresden;
     public GameObject[] path;
     int wavepoint;
@@ -17,7 +16,7 @@ public class Ghoul : Vehicle
     // Use this for initialization
     void Start()
     {
-        vehiclePosition = transform.position;
+        EnemyPosition = transform.position;
         wavepoint = 0;
         isOn = true;
     }
@@ -26,7 +25,7 @@ public class Ghoul : Vehicle
     void Update()
     {
         CalculateSteeringForce();
-        vehiclePosition = transform.position;
+        EnemyPosition = transform.position;
     }
 
     /// <summary>
@@ -36,20 +35,20 @@ public class Ghoul : Vehicle
     {
         if (Target(dresden))
         {
-            speed += Seek(dresden);
+            velocity += Seek(dresden);
         }
         else
         {
-            speed += PathFollow(wavepoint);
+            velocity += PathFollow(wavepoint);
         }
-        speed *= dragForce;
-        if (speed.magnitude <= 0.1)
+        velocity *= dragForce;
+        if (velocity.magnitude <= 0.1)
             //if the velocity vector is to small to be noticable, stop moving
-            speed = Vector3.zero;
+            velocity = Vector3.zero;
 
         //max velocity
-        speed = Vector3.ClampMagnitude(speed, maxSpeed);
-        transform.position += speed * Time.deltaTime;
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        transform.position += velocity * Time.deltaTime;
     }
 
     public Vector3 PathFollow(int currentPoint)
