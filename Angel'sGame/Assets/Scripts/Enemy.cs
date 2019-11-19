@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Vehicle : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    public Vector3 vehiclePosition;
+    public Vector3 EnemyPosition;
     public Vector3 velocity;
     public Vector3 acceleration;
     public Vector3 direction;
@@ -35,7 +35,7 @@ public abstract class Vehicle : MonoBehaviour
     {
         lookAhead = 5;
         bounds = GetComponent<BoxCollider>().bounds;
-        vehiclePosition = transform.position;
+        EnemyPosition = transform.position;
         gizmoColor = Color.white;
         SetBoundingSpheres();
     }
@@ -58,15 +58,15 @@ public abstract class Vehicle : MonoBehaviour
         CalculateSteeringForce();
 
         velocity += acceleration * Time.deltaTime;
-        vehiclePosition += velocity * Time.deltaTime;
+        EnemyPosition += velocity * Time.deltaTime;
 
         direction = velocity.normalized;
         acceleration = Vector3.zero;
 
 
-        vehiclePosition.y = gameObject.GetComponentInChildren<Transform>().position.y; //Every vehicle has an empty component at their base to keep them bound to the ground
+        EnemyPosition.y = gameObject.GetComponentInChildren<Transform>().position.y; //Every Enemy has an empty component at their base to keep them bound to the ground
 
-        transform.position = vehiclePosition;
+        transform.position = EnemyPosition;
         transform.rotation = Quaternion.Euler(transform.rotation.x, -Mathf.Rad2Deg * Mathf.Atan2(direction.z, direction.x), transform.rotation.z);
         bounds = GetComponent<BoxCollider>().bounds;
 
@@ -111,7 +111,7 @@ public abstract class Vehicle : MonoBehaviour
     /// <param name="targetPos"></param>
     public Vector3 Seek(Vector3 targetPos)
     {
-        Vector3 desiredVelocity = targetPos - vehiclePosition;
+        Vector3 desiredVelocity = targetPos - EnemyPosition;
 
         desiredVelocity = desiredVelocity.normalized * maxSpeed;
 
@@ -134,7 +134,7 @@ public abstract class Vehicle : MonoBehaviour
     /// </summary>
     public Vector3 Flee(Vector3 targetPos)
     {
-        Vector3 desiredVelocity = vehiclePosition - targetPos;
+        Vector3 desiredVelocity = EnemyPosition - targetPos;
         desiredVelocity = desiredVelocity.normalized * maxSpeed;
         Vector3 seekingForce = desiredVelocity - velocity;
         return seekingForce;
@@ -149,7 +149,7 @@ public abstract class Vehicle : MonoBehaviour
     }
 
     /// <summary>
-    /// causes vehicle to rebound
+    /// causes Enemy to rebound
     /// </summary>
     public void ReturnToBounds(Bounds bounds)
     {
@@ -157,11 +157,11 @@ public abstract class Vehicle : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the vehicle is out of bounds
+    /// Checks if the Enemy is out of bounds
     /// </summary>
     public bool InBounds(Bounds bounds)
     {
-        if (vehiclePosition.x > bounds.max.x || vehiclePosition.x < bounds.min.x || vehiclePosition.y > bounds.max.y || vehiclePosition.y < bounds.min.y)
+        if (EnemyPosition.x > bounds.max.x || EnemyPosition.x < bounds.min.x || EnemyPosition.y > bounds.max.y || EnemyPosition.y < bounds.min.y)
         {
             return true;
         }
@@ -170,8 +170,8 @@ public abstract class Vehicle : MonoBehaviour
 
     public void RandomPosition()
     {
-        vehiclePosition = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0));
-        vehiclePosition.z = 0;
+        EnemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0));
+        EnemyPosition.z = 0;
     }
 
     public bool AABB(Bounds otherBounds)
@@ -196,7 +196,7 @@ public abstract class Vehicle : MonoBehaviour
     }
 
     /// <summary>
-    /// sets the bounding sphere for obstacle avoidance.  The sphere is centered around the ground prefab in the vehicle, 
+    /// sets the bounding sphere for obstacle avoidance.  The sphere is centered around the ground prefab in the Enemy, 
     /// with a radius equal to the max of the bounding box
     /// </summary>
     private void SetBoundingSpheres()

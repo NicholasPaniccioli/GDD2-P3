@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghoul : Vehicle
+public class Ghoul : Enemy
 {
 
     private Vector3 speed;
@@ -17,7 +17,7 @@ public class Ghoul : Vehicle
     // Use this for initialization
     void Start()
     {
-        vehiclePosition = transform.position;
+        EnemyPosition = transform.position;
         wavepoint = 0;
         isOn = true;
     }
@@ -26,7 +26,7 @@ public class Ghoul : Vehicle
     void Update()
     {
         CalculateSteeringForce();
-        vehiclePosition = transform.position;
+        EnemyPosition = transform.position;
     }
 
     /// <summary>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vampire : Vehicle
+public class Vampire : Enemy
 {
     public GameObject dresden;
     public float range;
@@ -27,7 +27,7 @@ public class Vampire : Vehicle
         {
             //IDLE ANIMATION
         }
-        vehiclePosition = transform.position;
+        EnemyPosition = transform.position;
     }
 
     public override void CalculateSteeringForce()
