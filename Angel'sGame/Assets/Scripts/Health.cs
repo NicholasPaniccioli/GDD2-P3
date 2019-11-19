@@ -11,17 +11,19 @@ public class Health : MonoBehaviour
 {
     public float maxHealth; // the maximum amount of health an entity can have
     public float health;  // the amount of health an entity has
+    private GameObject healthBar;
     // Start is called before the first frame update
     void Start()
     {
         //maxHealth = 100f;   // health starts out at 100
         health = maxHealth; // health starts at the max health
+        healthBar = GameObject.Find("Bar");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        healthBar.transform.localScale = new Vector3(health / maxHealth, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
 
     // Subtract damage from health
@@ -34,6 +36,10 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Die();
+        }
+        else
+        {
+            
         }
         Debug.Log("Health: " + health);
     }
