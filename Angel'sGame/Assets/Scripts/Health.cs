@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth; // the maximum amount of health an entity can have
     public float health;  // the amount of health an entity has
-    private GameObject healthBar;
+    public GameObject healthBar;
     public float iFrameTimeStamp;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,7 @@ public class Health : MonoBehaviour
         {
             gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.white;
         }
+
     }
 
     // Subtract damage from health
