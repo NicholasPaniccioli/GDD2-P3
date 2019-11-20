@@ -10,7 +10,7 @@ public class Rotate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        staff = gameObject.transform.GetChild(0).gameObject;
+        staff = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vampire : Enemy
 {
-    public GameObject dresden;
+    private GameObject dresden;
     public float range;
     [SerializeField]
     private float dragForce = 0.8f;
@@ -12,13 +12,14 @@ public class Vampire : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        dresden = GameObject.Find("Dresden");
+        base.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(dresden.transform.position, transform.position) < range)
+        if (Vector3.Distance(dresden.transform.position, transform.position) < range && !intersecting)
         {
             CalculateSteeringForce();
         }

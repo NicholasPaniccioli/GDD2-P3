@@ -19,6 +19,7 @@ public class Ghoul : Enemy
         EnemyPosition = transform.position;
         wavepoint = 0;
         isOn = true;
+        base.Start();
     }
 
     // Update is called once per frame
@@ -33,13 +34,16 @@ public class Ghoul : Enemy
     /// </summary>
     public override void CalculateSteeringForce()
     {
-        if (Target(dresden))
+        if (!intersecting)
         {
-            velocity += Seek(dresden);
-        }
-        else
-        {
-            velocity += PathFollow(wavepoint);
+            if (Target(dresden))
+            {
+                velocity += Seek(dresden);
+            }
+            else
+            {
+                velocity += PathFollow(wavepoint);
+            }
         }
         velocity *= dragForce;
         if (velocity.magnitude <= 0.1)

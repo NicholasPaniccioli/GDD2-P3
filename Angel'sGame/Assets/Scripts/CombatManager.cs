@@ -8,14 +8,12 @@ public class CombatManager : Singleton<MonoBehaviour> {
     [SerializeField]
     private float iFrameDuration = 1;
 
-    private float iFrameTimeStamp;
     private List<Enemy> enemies;
     private List<GameObject> allyDamageSources;
     // Start is called before the first frame update
     void Start() {
         enemies = new List<Enemy>();
         allyDamageSources = new List<GameObject>(); //  Will be entity
-        iFrameTimeStamp = Time.time;
 
         //  Will be enemies
         foreach(Enemy e in GameObject.FindObjectsOfType<Enemy>()) {
@@ -23,8 +21,6 @@ public class CombatManager : Singleton<MonoBehaviour> {
                 continue;
             enemies.Add(e);
         }
-        foreach (GameObject proj in GameObject.FindGameObjectsWithTag("allyDamageSource"))
-            allyDamageSources.Add(proj);
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -32,17 +28,28 @@ public class CombatManager : Singleton<MonoBehaviour> {
     // Update is called once per frame
     void Update() {
         foreach(Enemy e in enemies) {
-            if(iFrameTimeStamp <= Time.time &&
-                e.gameObject.GetComponent<BoxCollider2D>().IsTouching(player.GetComponent<BoxCollider2D>())) {
-                //  Player is being hit by the demon, take damage
-                player.GetComponent<Health>().TakeDamage(10);
-                iFrameTimeStamp = Time.time + iFrameDuration;
+
+            if (e.gameObject.GetComponent<BoxCollider>().bounds.Intersects(player.GetComponent<BoxCollider>().bounds))
+            {
+                if (player.GetComponent<Health>().iFrameTimeStamp <= Time.time)
+                {
+                    //  Player is being hit by the demon, take damage
+                    player.GetComponent<Health>().TakeDamage(10);
+                    player.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
+                    e.Intersecting = true;
+                }
             }
+            else if (e.Intersecting)
+                 e.Intersecting = false;
 
             foreach(GameObject d in allyDamageSources) {
-                if(d.GetComponent<CircleCollider2D>().IsTouching(e.gameObject.GetComponent<BoxCollider2D>())) {
+                if(d.GetComponent<SphereCollider>().bounds.Intersects(e.GetComponent<BoxCollider>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(e.GetComponent<BoxCollider>().bounds.center)) {
                     //  Enemy Colliding with damage source, damage will be handled differently later
-                    e.gameObject.GetComponent<Health>().TakeDamage(10);
+                    if (e.GetComponent<Health>().iFrameTimeStamp <= Time.time)
+                    {
+                        e.gameObject.GetComponent<Health>().TakeDamage(d.GetComponent<Ability>().Damage);
+                        e.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
+                    }
                 }
             }
         }
@@ -52,7 +59,16 @@ public class CombatManager : Singleton<MonoBehaviour> {
         enemies.Add(e);
     }
 
+    public void removeEnemy(Enemy e)
+    {
+        enemies.Remove(e);
+    }
+
     public void addAllyDamageSource(GameObject newObj) {
         allyDamageSources.Add(newObj);
+    }
+    public void removeAllyDamageSource(GameObject newObj)
+    {
+        allyDamageSources.Remove(newObj);
     }
 }

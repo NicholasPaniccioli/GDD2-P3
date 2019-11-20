@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionScript : Ability
+public class Fireball : Ability
 {
-
+    [SerializeField]
+    private float duration;//Time until the projectile is deleted
+    [SerializeField]
+    private float maxSpeed;
     private float initializationTime;
     CombatManager combatManager;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         initializationTime = Time.timeSinceLevelLoad;
         combatManager = GameObject.Find("Combat Manager").GetComponent<CombatManager>();
         combatManager.addAllyDamageSource(gameObject);
     }
 
     // Update is called once per frame
-    void Update() {
-        float timeAlive = Time.timeSinceLevelLoad - initializationTime;
-        if(timeAlive > 0.7f) {
+    void Update()
+    {
+        gameObject.transform.position += gameObject.transform.right * maxSpeed * Time.deltaTime;
+        if (initializationTime + duration <= Time.time)
+        {
             combatManager.removeAllyDamageSource(gameObject);
             Destroy(gameObject);
         }
