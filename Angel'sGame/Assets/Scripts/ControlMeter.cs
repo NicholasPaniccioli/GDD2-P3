@@ -8,18 +8,20 @@ public class ControlMeter : MonoBehaviour
     public float minControl;       // the minimum amount of Control
     public float maxControl;       // the maximum amount of Control possible
     public float bufferPoint;      // intervals of point of no return
+    private GameObject controlBar;
 
     // Start is called before the first frame update
     void Start()
     {
         controlAmount = 0f; // Control starts at 0
         maxControl = 100f;  // Max Control is 100
+        controlBar = GameObject.Find("BarBar");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        controlBar.transform.localScale = new Vector3(controlAmount / maxControl , controlBar.transform.localScale.y, controlBar.transform.localScale.z);
     }
 
     // Increase the amount of Control
