@@ -7,7 +7,7 @@ public class Abilities : MonoBehaviour
     Health health;
     ControlMeter controlMeter;
     [SerializeField]
-    private GameObject basicAttack, fireball;
+    private GameObject basicAttack, fireball, staff;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class Abilities : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))// fireball
         {
-            Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, Quaternion.identity);
+            Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, Quaternion.identity).GetComponent<Fireball>().staff = staff;
             gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))    // if the player presses the '4' key above the letters (not the numpad), heal

@@ -21,7 +21,8 @@ public class ControlMeter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controlBar.transform.localScale = new Vector3(controlAmount / maxControl , controlBar.transform.localScale.y, controlBar.transform.localScale.z);
+        if (controlBar != null)
+            controlBar.transform.localScale = new Vector3(controlAmount / maxControl , controlBar.transform.localScale.y, controlBar.transform.localScale.z);
     }
 
     // Increase the amount of Control

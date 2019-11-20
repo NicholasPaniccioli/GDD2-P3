@@ -6,8 +6,7 @@ public class Fireball : Ability
 {
     [SerializeField]
     private float duration, maxSpeed;//Time until the projectile is deleted
-    [SerializeField]
-    private GameObject staff ;
+    public GameObject staff ;
     private float initializationTime;
     CombatManager combatManager;
 
