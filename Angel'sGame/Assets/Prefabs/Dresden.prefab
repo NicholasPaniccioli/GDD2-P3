@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5524358030078693885}
   - component: {fileID: 5524358030078693886}
   - component: {fileID: 5524358030078693881}
+  - component: {fileID: 1937929815}
   m_Layer: 0
   m_Name: Dresden
   m_TagString: Untagged
@@ -61,7 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cc513d4bf8f674d9666b7212f5f09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicAttack: {fileID: 0}
   dragForce: 0.8
   maxSpeed: 3
 --- !u!114 &5524358030078693885
@@ -76,8 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adf429dc6157de478297ce9e70ab7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallVelocity: {x: 0, y: 0, z: 0}
-  fireball: {fileID: 0}
+  basicAttack: {fileID: 6909345357613343342, guid: d8964ee4938b3654dae84e25ef1a0beb,
+    type: 3}
+  fireball: {fileID: 2820541784554012870, guid: c55a46a05dd6ba04f940a5640268b13b,
+    type: 3}
 --- !u!114 &5524358030078693886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +108,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 2.1, z: 5}
   m_Center: {x: -0.1, y: 0, z: 0}
+--- !u!114 &1937929815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524358030078693887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77126ae4f964f6d4fa13bcac907a4cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlAmount: 0
+  minControl: 0
+  maxControl: 100
+  bufferPoint: 25
 --- !u!1001 &5524358028338883382
 PrefabInstance:
   m_ObjectHideFlags: 0

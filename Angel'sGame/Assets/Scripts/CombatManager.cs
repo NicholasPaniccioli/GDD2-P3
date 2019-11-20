@@ -47,7 +47,7 @@ public class CombatManager : Singleton<MonoBehaviour> {
                     //  Enemy Colliding with damage source, damage will be handled differently later
                     if (e.GetComponent<Health>().iFrameTimeStamp <= Time.time)
                     {
-                        e.gameObject.GetComponent<Health>().TakeDamage(10);
+                        e.gameObject.GetComponent<Health>().TakeDamage(d.GetComponent<Ability>().Damage);
                         e.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
                     }
                 }
