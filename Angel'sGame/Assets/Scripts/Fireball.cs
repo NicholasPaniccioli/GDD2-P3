@@ -5,9 +5,9 @@ using UnityEngine;
 public class Fireball : Ability
 {
     [SerializeField]
-    private float duration;//Time until the projectile is deleted
+    private float duration, maxSpeed;//Time until the projectile is deleted
     [SerializeField]
-    private float maxSpeed;
+    private GameObject staff ;
     private float initializationTime;
     CombatManager combatManager;
 
@@ -22,7 +22,7 @@ public class Fireball : Ability
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += gameObject.transform.right * maxSpeed * Time.deltaTime;
+        gameObject.transform.position += staff.transform.right * maxSpeed * Time.deltaTime;
         if (initializationTime + duration <= Time.time)
         {
             combatManager.removeAllyDamageSource(gameObject);
