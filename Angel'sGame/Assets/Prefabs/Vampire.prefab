@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 494673164880459440}
   - component: {fileID: 494673164880459447}
-  - component: {fileID: 2472989481616407801}
+  - component: {fileID: -3359647020544113019}
+  - component: {fileID: 8310355932110064751}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494673164880459446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.88, y: -0.25, z: -3.3048909}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -45,44 +46,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc97fb61448798c4dae5311445739b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehiclePosition: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  acceleration: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  mass: 0
-  friction: 0
   maxSpeed: 2
-  lookAhead: 0
-  gizmoColor: {r: 0, g: 0, b: 0, a: 0}
   dresden: {fileID: 0}
   range: 10
   dragForce: 0.8
---- !u!61 &2472989481616407801
-BoxCollider2D:
+--- !u!65 &-3359647020544113019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494673164880459446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 2.6, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8310355932110064751
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494673164880459446}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59ad6dd020c4ee4ab7795a23338dde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 10
 --- !u!1001 &494673163736960399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,7 +102,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: bd274c147e8bc934eabbbb27efac88f4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3048909
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bd274c147e8bc934eabbbb27efac88f4,
         type: 3}

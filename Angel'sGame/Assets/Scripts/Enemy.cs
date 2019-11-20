@@ -6,10 +6,17 @@ public abstract class Enemy : MonoBehaviour {
     protected Vector3 velocity, EnemyPosition;//these needs to be accessed by its children
     [SerializeField]
     protected float maxSpeed;//same for maxSpeed 
+    protected bool intersecting;
+
+    public bool Intersecting
+    {
+        get { return intersecting; }
+        set { intersecting = value; }
+    }
 
     // Use this for initialization
     protected void Start() {
-        
+        intersecting = false;
     }
 
     // Update is called once per frame
