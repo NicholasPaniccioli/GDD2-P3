@@ -9,10 +9,10 @@ public class PlayerAttacc : MonoBehaviour {
     private GameObject explosionInstance;
     [SerializeField]
     private GameObject CombatManagerObj;
-    private CombatManager combatManager;
-    private GameObject staff;
     [SerializeField]
     private float coolDown = 1;
+    private CombatManager combatManager;
+    private GameObject staff;
 
     //  Used for cooldowns
     private float timeStamp;
