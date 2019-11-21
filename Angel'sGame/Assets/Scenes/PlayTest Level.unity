@@ -9336,6 +9336,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vampire
       objectReference: {fileID: 0}
+    - target: {fileID: 494673164880459446, guid: 03eef434469a4f441b5df163bc6230b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 494673164880459440, guid: 03eef434469a4f441b5df163bc6230b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10674,6 +10679,15 @@ PrefabInstance:
       propertyPath: staff
       value: 
       objectReference: {fileID: 1863520557}
+    - target: {fileID: 5524358030078693885, guid: 473dc55005e583c40b1ec83e30dbdee1,
+        type: 3}
+      propertyPath: healCoolDown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 666074224, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5478137742490119398, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
