@@ -13,6 +13,8 @@ public class Abilities : MonoBehaviour
     public float healCoolDown;      // cooldown for heal ability
     private float fireTimeStamp;    // time stamp for fireball
     private float healTimeStamp;    // time stamp for heal
+    private GameObject healBar;
+    private GameObject fireBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class Abilities : MonoBehaviour
         controlMeter = gameObject.GetComponent<ControlMeter>();
         fireTimeStamp = Time.time;
         healTimeStamp = Time.time;
+        healBar = GameObject.Find("CoolDownH");
+        fireBar = GameObject.Find("CoolDownF");
     }
 
     // Update is called once per frame
@@ -40,6 +44,24 @@ public class Abilities : MonoBehaviour
             gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
             gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
             healTimeStamp = Time.time + healCoolDown;
+        }
+
+        if(healTimeStamp <= Time.time)
+        {
+            healBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+        }
+        else
+        { 
+            healBar.transform.localScale = new Vector3((healTimeStamp - Time.time) / healCoolDown, 1.0f, 1.0f);
+        }
+
+        if (fireTimeStamp <= Time.time)
+        {
+            fireBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+        }
+        else
+        {
+            fireBar.transform.localScale = new Vector3((fireTimeStamp - Time.time) / fireBallCoolDown, 1.0f, 1.0f);
         }
     }
 }
