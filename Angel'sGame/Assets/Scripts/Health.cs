@@ -60,6 +60,7 @@ public class Health : MonoBehaviour
         // play death animation
         // set active to false
         Debug.Log("You died!");
+        gameObject.GetComponent<Collider>().enabled = false;
         gameObject.SetActive(false);
     }
 

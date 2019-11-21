@@ -9,10 +9,12 @@ public class Fireball : Ability
     public GameObject staff ;
     private float initializationTime;
     CombatManager combatManager;
+    Vector3 crosshairPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        crosshairPosition = staff.transform.right;
         initializationTime = Time.timeSinceLevelLoad;
         combatManager = GameObject.Find("Combat Manager").GetComponent<CombatManager>();
         combatManager.addAllyDamageSource(gameObject);
@@ -21,7 +23,7 @@ public class Fireball : Ability
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += staff.transform.right * maxSpeed * Time.deltaTime;
+        gameObject.transform.position += crosshairPosition * maxSpeed * Time.deltaTime;
         if (initializationTime + duration <= Time.time)
         {
             combatManager.removeAllyDamageSource(gameObject);
