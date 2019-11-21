@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5524358030078693884}
   - component: {fileID: 5524358030078693885}
   - component: {fileID: 5524358030078693886}
+  - component: {fileID: 5524358030078693881}
   - component: {fileID: 1937929815}
   m_Layer: 0
   m_Name: Dresden
@@ -79,7 +80,7 @@ MonoBehaviour:
     type: 3}
   fireball: {fileID: 2820541784554012870, guid: c55a46a05dd6ba04f940a5640268b13b,
     type: 3}
-  staff: {fileID: 4578924205146911295}
+  staff: {fileID: 0}
 --- !u!114 &5524358030078693886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +97,19 @@ MonoBehaviour:
   health: 100
   healthBar: {fileID: 0}
   iFrameTimeStamp: 0
+--- !u!65 &5524358030078693881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524358030078693887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 2.1, z: 5}
+  m_Center: {x: -0.1, y: 0, z: 0}
 --- !u!114 &1937929815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,11 +133,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5524358030078693882}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
-        type: 3}
-      propertyPath: m_Name
-      value: Staff
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,14 +203,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
+        type: 3}
+      propertyPath: m_Name
+      value: Staff
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f031b46ef4f4be4d913cd4f4fae7c21, type: 3}
---- !u!1 &4578924205146911295 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
-    type: 3}
-  m_PrefabInstance: {fileID: 5524358028338883382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &707279086748090412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
@@ -215,11 +223,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5524358030078693882}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 1d46306cb6e44034a85790c55319c753,
-        type: 3}
-      propertyPath: m_Name
-      value: Dresden
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1d46306cb6e44034a85790c55319c753,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,6 +292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1d46306cb6e44034a85790c55319c753,
+        type: 3}
+      propertyPath: m_Name
+      value: Dresden
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d46306cb6e44034a85790c55319c753, type: 3}
