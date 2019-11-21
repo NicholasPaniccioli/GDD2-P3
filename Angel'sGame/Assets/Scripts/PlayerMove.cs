@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private Vector3 velocity;
+    private Vector3 demonMove;
+    private float demonAngle;
     private GameObject dresden;
     private CircleCollider2D wallCollider;
     [SerializeField]
@@ -16,6 +18,8 @@ public class PlayerMove : MonoBehaviour
         velocity = Vector3.zero;
         dresden = gameObject.transform.GetChild(0).gameObject;
         wallCollider = GetComponentInChildren<CircleCollider2D>();
+        demonMove = Vector3.zero;
+        demonAngle = 0;
     }
 
     // Update is called once per frame
@@ -42,6 +46,17 @@ public class PlayerMove : MonoBehaviour
         {
             velocity += Vector3.right;
             dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        if (false/*player.control > 75*/){//Once Jacob is done with making a player script, check the control variable.  Until then, this will never trigger
+            if (demonMove == Vector3.zero){
+                demonMove = velocity;
+            }
+            else{
+                int newAngle = (int)Random.Range(demonAngle - 5, demonAngle + 5);
+                demonMove = Quaternion.AngleAxis(newAngle, Vector3.forward) * demonMove;
+                demonAngle = newAngle;
+                velocity += demonMove;
+            }
         }
         //deceleration
         velocity *= dragForce;
