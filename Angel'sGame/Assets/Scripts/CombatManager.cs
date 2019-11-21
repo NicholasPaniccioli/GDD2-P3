@@ -29,7 +29,7 @@ public class CombatManager : Singleton<MonoBehaviour> {
     void Update() {
         foreach(Enemy e in enemies) {
 
-            if (e.gameObject.GetComponent<BoxCollider>().bounds.Intersects(player.GetComponent<BoxCollider>().bounds))
+            if (e.transform.GetChild(0).gameObject.gameObject.GetComponent<Renderer>().bounds.Intersects(player.transform.GetChild(0).gameObject.GetComponent<Renderer>().bounds))
             {
                 if (player.GetComponent<Health>().iFrameTimeStamp <= Time.time)
                 {
@@ -43,7 +43,7 @@ public class CombatManager : Singleton<MonoBehaviour> {
                  e.Intersecting = false;
 
             foreach(GameObject d in allyDamageSources) {
-                if(d.GetComponent<SphereCollider>().bounds.Intersects(e.GetComponent<BoxCollider>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(e.GetComponent<BoxCollider>().bounds.center)) {
+                if(d.GetComponent<SphereCollider>().bounds.Intersects(e.transform.GetChild(0).gameObject.GetComponent<Renderer>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(e.transform.GetChild(0).gameObject.GetComponent<Renderer>().bounds.center)) {
                     //  Enemy Colliding with damage source, damage will be handled differently later
                     if (e.GetComponent<Health>().iFrameTimeStamp <= Time.time)
                     {
