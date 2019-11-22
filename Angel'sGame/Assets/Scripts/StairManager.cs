@@ -12,17 +12,14 @@ public class StairManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        stair = GetComponent<Collider2D>();
-        player = GetComponent<Collider2D>();
+
+        stair = GameObject.Find("Staircase").GetComponent<Collider2D>();
+        player = GameObject.Find("FeetCollider").GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        stair = GetComponent<Collider2D>();
-        player = GetComponent<Collider2D>();
-
         //Checks if the colliders overlap 
         //and if so the player goes to the next level
         if (stair.IsTouching(player))
