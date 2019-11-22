@@ -41,16 +41,17 @@ public class PlayerAttacc : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        //  If off cooldown and mouse button pressed, fire
-        if(Input.GetMouseButtonDown(0) && timeStamp <= Time.time) {
-            //  Reset cooldown
-            timeStamp = Time.time + coolDown;
+        ////  If off cooldown and mouse button pressed, fire
+        //if (Input.GetMouseButtonDown(0) && timeStamp <= Time.time)
+        //{
+        //    //  Reset cooldown
+        //    timeStamp = Time.time + coolDown;
 
-            //  Grab mouse pos and find where it should spawn
-            Vector3 explosionPos = staff.GetComponent<Renderer>().bounds.center + staff.transform.right * distanceFromDresden;
+        //    //  Grab mouse pos and find where it should spawn
+        //    Vector3 explosionPos = staff.GetComponent<Renderer>().bounds.center + staff.transform.right * distanceFromDresden;
 
-            //  Spawn the EKSUPLOSION
-            Instantiate(explosionInstance, explosionPos, Quaternion.identity);
-        }
+        //    //  Spawn the EKSUPLOSION
+        //    Instantiate(explosionInstance, explosionPos, Quaternion.identity);
+        //}
     }
 }

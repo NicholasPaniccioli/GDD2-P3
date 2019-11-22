@@ -9558,11 +9558,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302205256}
     m_Modifications:
-    - target: {fileID: 2226123488459023140, guid: 8d1136165521828409a29ae02157ad5d,
-        type: 3}
-      propertyPath: m_Name
-      value: HealAb
-      objectReference: {fileID: 0}
     - target: {fileID: 908656547919110935, guid: 8d1136165521828409a29ae02157ad5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9617,6 +9612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226123488459023140, guid: 8d1136165521828409a29ae02157ad5d,
+        type: 3}
+      propertyPath: m_Name
+      value: HealAb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1136165521828409a29ae02157ad5d, type: 3}
@@ -10910,6 +10910,16 @@ PrefabInstance:
         type: 3}
       propertyPath: fireBallCoolDown
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524358030078693885, guid: 473dc55005e583c40b1ec83e30dbdee1,
+        type: 3}
+      propertyPath: basicCoolDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524358030078693885, guid: 473dc55005e583c40b1ec83e30dbdee1,
+        type: 3}
+      propertyPath: AOECoolDown
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 666074224, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
       propertyPath: m_RootOrder
