@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
             velocity += Vector3.right;
             dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        if (false/*player.control > 75*/){//Once Jacob is done with making a player script, check the control variable.  Until then, this will never trigger
+        if (false/*player.control > 25*/){//Once Jacob is done with making a player script, check the control variable.  Until then, this will never trigger
             if (demonMove == Vector3.zero){
                 demonMove = velocity;
             }
