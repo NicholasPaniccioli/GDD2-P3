@@ -25,7 +25,7 @@ public class StairManager : MonoBehaviour
         if (stair.IsTouching(player))
         {
             Debug.Log("Hit the trigger");
-            SceneManager.LoadScene("PlayTest Level");
+            SceneManager.LoadScene("Level Two");
         }
     }
 }
