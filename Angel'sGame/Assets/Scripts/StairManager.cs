@@ -22,7 +22,7 @@ public class StairManager : MonoBehaviour
     {
         //Checks if the colliders overlap 
         //and if so the player goes to the next level
-        if (stair.IsTouching(player) && SceneManager.)
+        if (stair.IsTouching(player))
         {
             Debug.Log("Hit the trigger");
             SceneManager.LoadScene("Level Two");
