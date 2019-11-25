@@ -18,12 +18,13 @@ public class Player : MonoBehaviour {
     //  Stats
     [Header("Stats")]
     [SerializeField]
-    private float maxHealth = 100;
+    private float maxHealth = 100, iFrameDuration = 1;
     [SerializeField]
     private GameObject healthBar;
     private Renderer dresdenRenderer;
     private float health;
     private float iFrameTimeStamp;
+    public float IFrameTimeStamp { get { return iFrameTimeStamp; } }
     public float Health { get { return health; } }
 
     void Start() {
@@ -121,6 +122,7 @@ public class Player : MonoBehaviour {
         health -= damage;
         if (health <= 0)
             Die();
+        iFrameTimeStamp = Time.time + iFrameDuration;
     }
 
     /// <summary>
