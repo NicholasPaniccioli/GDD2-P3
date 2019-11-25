@@ -26,6 +26,9 @@ public class Abilities : MonoBehaviour
     private GameObject fireBar;
     private GameObject AOEBar;
 
+    // pause :)
+    private GameObject pauseObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,67 +42,71 @@ public class Abilities : MonoBehaviour
 
         healBar = GameObject.Find("CoolDownH");
         fireBar = GameObject.Find("CoolDownF");
+        pauseObj = GameObject.Find("PauseManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // left click
-        if (Input.GetMouseButtonDown(0) && basicTimeStamp <= Time.time)//basic
+        if (!(pauseObj.GetComponent<PauseManager>().pause))
         {
-            Instantiate<GameObject>(basicAttack, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center + gameObject.transform.GetChild(1).right, Quaternion.identity);
-            basicTimeStamp = Time.time + basicCoolDown;
-        }
-        
-        // right click
-        if (Input.GetMouseButtonDown(1) && fireTimeStamp <= Time.time)// fireball
-        {
-            Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation).GetComponent<Fireball>().staff = staff;
-            gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
-            fireTimeStamp = Time.time + fireBallCoolDown;
-        }
+            // left click
+            if (Input.GetMouseButtonDown(0) && basicTimeStamp <= Time.time)//basic
+            {
+                Instantiate<GameObject>(basicAttack, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center + gameObject.transform.GetChild(1).right, Quaternion.identity);
+                basicTimeStamp = Time.time + basicCoolDown;
+            }
 
-        // Q
-        if (Input.GetKeyDown(KeyCode.Q) && healTimeStamp <= Time.time)    // heal
-        {
-            gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
-            gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
-            healTimeStamp = Time.time + healCoolDown;
-        }
+            // right click
+            if (Input.GetMouseButtonDown(1) && fireTimeStamp <= Time.time)// fireball
+            {
+                Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation).GetComponent<Fireball>().staff = staff;
+                gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
+                fireTimeStamp = Time.time + fireBallCoolDown;
+            }
 
-        // E
-        if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
-        {
-            Debug.Log("AOE Used");
-            // add AOE attack code here
-        }
+            // Q
+            if (Input.GetKeyDown(KeyCode.Q) && healTimeStamp <= Time.time)    // heal
+            {
+                gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
+                gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
+                healTimeStamp = Time.time + healCoolDown;
+            }
 
-        // Bars Code
-        if (healTimeStamp <= Time.time) // heal
-        {
-            healBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
-        }
-        else
-        { 
-            healBar.transform.localScale = new Vector3((healTimeStamp - Time.time) / healCoolDown, 1.0f, 1.0f);
-        }
+            // E
+            if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
+            {
+                Debug.Log("AOE Used");
+                // add AOE attack code here
+            }
 
-        if (fireTimeStamp <= Time.time) // fireball
-        {
-            fireBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
-        }
-        else
-        {
-            fireBar.transform.localScale = new Vector3((fireTimeStamp - Time.time) / fireBallCoolDown, 1.0f, 1.0f);
-        }
+            // Bars Code
+            if (healTimeStamp <= Time.time) // heal
+            {
+                healBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+            }
+            else
+            {
+                healBar.transform.localScale = new Vector3((healTimeStamp - Time.time) / healCoolDown, 1.0f, 1.0f);
+            }
 
-        //if (AOETimeStamp <= Time.time)  // AOE
-        //{
-        //    AOEBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
-        //}
-        //else
-        //{
-        //    AOEBar.transform.localScale = new Vector3((AOETimeStamp - Time.time) / AOECoolDown, 1.0f, 1.0f);
-        //}
+            if (fireTimeStamp <= Time.time) // fireball
+            {
+                fireBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+            }
+            else
+            {
+                fireBar.transform.localScale = new Vector3((fireTimeStamp - Time.time) / fireBallCoolDown, 1.0f, 1.0f);
+            }
+
+            //if (AOETimeStamp <= Time.time)  // AOE
+            //{
+            //    AOEBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+            //}
+            //else
+            //{
+            //    AOEBar.transform.localScale = new Vector3((AOETimeStamp - Time.time) / AOECoolDown, 1.0f, 1.0f);
+            //}
+        }
     }
 }
