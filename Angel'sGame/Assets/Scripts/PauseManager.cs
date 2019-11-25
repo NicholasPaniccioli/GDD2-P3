@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-
     public bool pause;
 
     // Start is called before the first frame update
@@ -20,5 +19,10 @@ public class PauseManager : MonoBehaviour
         {
             pause = !pause;
         }
+
+        if (pause)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;
     }
 }
