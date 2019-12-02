@@ -90,6 +90,7 @@ public abstract class Enemy : MonoBehaviour {
         if (health <= 0) {
             Die();
         }
+        
         iFrameTimeStamp = Time.time + iFrameDuration;
         gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
     }

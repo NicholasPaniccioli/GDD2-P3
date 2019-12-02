@@ -28,6 +28,7 @@ public class Vampire : Enemy
             //IDLE ANIMATION
         }
         EnemyPosition = transform.position;
+        base.Update();
     }
 
     public override void CalculateSteeringForce()
