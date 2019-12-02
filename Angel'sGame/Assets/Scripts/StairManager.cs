@@ -25,6 +25,8 @@ public class StairManager : MonoBehaviour
         {
             Debug.Log("Hit the trigger");
 
+            //checks the current level the player is on
+            //Based on that loads the next scene
             if(CheckScene() == "PlayTest Level")
             {
                 SceneManager.LoadScene("Level Two");
@@ -33,10 +35,23 @@ public class StairManager : MonoBehaviour
             {
                 SceneManager.LoadScene("Level Three");
             }
+            else if(CheckScene() == "Level Three")
+            {
+                SceneManager.LoadScene("Level Four");
+            }
+            else if(CheckScene() == "Level Four")
+            {
+                SceneManager.LoadScene("Level Five");
+            }
+            else if(CheckScene() == "Level Five")
+            {
+                SceneManager.LoadScene("Level Six");
+            }
         }
     }
 
     //Method checks the current scene the player is in
+    //Returns the name of the scene
     public string CheckScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();

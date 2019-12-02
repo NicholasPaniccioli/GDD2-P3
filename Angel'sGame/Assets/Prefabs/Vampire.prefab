@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2
+  maxHealth: 100
+  iFrameDuration: 1
   range: 10
   dragForce: 0.8
 --- !u!114 &8310355932110064751

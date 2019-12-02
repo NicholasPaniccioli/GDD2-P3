@@ -445,7 +445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &336362322
 PrefabInstance:
@@ -459,15 +459,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dresden
       objectReference: {fileID: 0}
+    - target: {fileID: 5524358030078693887, guid: 473dc55005e583c40b1ec83e30dbdee1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5524358030078693882, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 107.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5524358030078693882, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -65.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5524358030078693882, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
@@ -497,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 5524358030078693882, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5524358030078693882, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
@@ -5015,7 +5020,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &723351710 stripped
 GameObject:
@@ -5210,7 +5215,7 @@ Transform:
   - {fileID: 551762898}
   - {fileID: 1505510944}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207584471
 GameObject:
@@ -5241,7 +5246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf666f0452747d49b3c4f2bbaecf5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 723351710}
+  player: {fileID: 0}
   iFrameDuration: 1
 --- !u!4 &1207584473
 Transform:
@@ -5255,7 +5260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1281231456 stripped
 BoxCollider2D:
@@ -31145,7 +31150,7 @@ PrefabInstance:
     - target: {fileID: 9204327305693430679, guid: 47922af57fd9d5e4d93f631a2dec2a60,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9204327305693430679, guid: 47922af57fd9d5e4d93f631a2dec2a60,
         type: 3}
