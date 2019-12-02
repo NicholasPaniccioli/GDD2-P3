@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2
-  maxHealth: 100
+  maxHealth: 30
   iFrameDuration: 1
+  combatManager: {fileID: 0}
   range: 10
   dragForce: 0.8
 --- !u!114 &8310355932110064751
