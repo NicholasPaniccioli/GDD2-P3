@@ -154,7 +154,7 @@ MonoBehaviour:
   staff: {fileID: 4578924205146911295}
   fireBallCoolDown: 3
   healCoolDown: 5
-  basicCoolDown: 0
+  basicCoolDown: 0.8
   AOECoolDown: 0
 --- !u!114 &5524358030078693886
 MonoBehaviour:

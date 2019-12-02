@@ -10,10 +10,8 @@ public class Abilities : MonoBehaviour
     private GameObject basicAttack, fireball, staff;
 
     // Cool Downs
-    public float fireBallCoolDown;  // cooldown for fireball ability
-    public float healCoolDown;      // cooldown for heal ability
-    public float basicCoolDown;     // cooldown for basic attack
-    public float AOECoolDown;       // cooldown for basic attack
+    [SerializeField]
+    private float fireBallCoolDown, healCoolDown, basicCoolDown, AOECoolDown;       // cooldown for basic attack
 
     // Time Stamps
     private float fireTimeStamp;    // time stamp for fireball

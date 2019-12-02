@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     //  Movement
     private Vector3 velocity;
     private GameObject dresden;
+    private CircleCollider2D wallCollider;
     [Header("Movement")]
     [SerializeField]
     private float dragForce = 0.8f, maxSpeed = 3,speedMod = 1;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour {
         //  Movement
         velocity = Vector3.zero;
         dresden = gameObject.transform.GetChild(0).gameObject;
+        wallCollider = GetComponentInChildren<CircleCollider2D>();
 
         //  Stats
         health = maxHealth;
@@ -99,7 +101,9 @@ public class Player : MonoBehaviour {
 
         //  Max velocity
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-        transform.position += velocity * Time.deltaTime;
+        wallCollider.transform.position += velocity * Time.deltaTime;
+        transform.position = wallCollider.transform.position;
+        wallCollider.transform.position = transform.position;
     }
 
     /// <summary>
