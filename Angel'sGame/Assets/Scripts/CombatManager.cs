@@ -24,26 +24,28 @@ public class CombatManager : Singleton<MonoBehaviour> {
 
     // Update is called once per frame
     void Update() {
-        foreach(Enemy e in enemies) {
-            if (e.gameObject.GetComponent<BoxCollider>().bounds.Intersects(player.GetComponent<BoxCollider>().bounds)) {
+        for(int i = 0; i < enemies.Count; i++) {
+            if (i >= enemies.Count)
+                continue;
+            if (enemies[i].gameObject.GetComponent<BoxCollider>().bounds.Intersects(player.GetComponent<BoxCollider>().bounds)) {
                 if (player.IFrameTimeStamp <= Time.time) {
                     //  Player is being hit by the demon, take damage
                     //player.GetComponent<Health>().TakeDamage(10);
                     //player.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
                     player.TakeDamage(10);
-                    e.Intersecting = true;
+                    enemies[i].Intersecting = true;
                 }
             }
-            else if (e.Intersecting)
-                 e.Intersecting = false;
+            else if (enemies[i].Intersecting)
+                 enemies[i].Intersecting = false;
 
             foreach(GameObject d in allyDamageSources) {
-                if(d.GetComponent<SphereCollider>().bounds.Intersects(e.GetComponent<BoxCollider>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(e.GetComponent<BoxCollider>().bounds.center)) {
+                if(d.GetComponent<SphereCollider>().bounds.Intersects(enemies[i].GetComponent<BoxCollider>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(enemies[i].GetComponent<BoxCollider>().bounds.center)) {
                     //  Enemy Colliding with damage source, damage will be handled differently later
-                    if (e.IFrameTimeStamp <= Time.time) {
+                    if (enemies[i].IFrameTimeStamp <= Time.time) {
                         //e.gameObject.GetComponent<Health>().TakeDamage(d.GetComponent<Ability>().Damage);
                         //e.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
-                        e.TakeDamage(d.GetComponent<Ability>().Damage);
+                        enemies[i].TakeDamage(d.GetComponent<Ability>().Damage);
                         
                     }
                 }

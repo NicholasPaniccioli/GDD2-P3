@@ -84,9 +84,10 @@ GameObject:
   - component: {fileID: 5524358030078693886}
   - component: {fileID: 5524358030078693881}
   - component: {fileID: 1937929815}
+  - component: {fileID: 1986004113}
   m_Layer: 0
   m_Name: Dresden
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5524358030078693887}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37d1b937ed92e6b48b17ba3745bf9bee, type: 3}
   m_Name: 
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5524358030078693887}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d59ad6dd020c4ee4ab7795a23338dde0, type: 3}
   m_Name: 
@@ -191,7 +192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5524358030078693887}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77126ae4f964f6d4fa13bcac907a4cbc, type: 3}
   m_Name: 
@@ -200,6 +201,24 @@ MonoBehaviour:
   minControl: 0
   maxControl: 100
   bufferPoint: 25
+--- !u!114 &1986004113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5524358030078693887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71903613c52a1e04b97163363f19784d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragForce: 0.8
+  maxSpeed: 3
+  speedMod: 1
+  maxHealth: 100
+  iFrameDuration: 1
+  healthBar: {fileID: 0}
 --- !u!1001 &5524358028338883382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5524358030078693882}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
+        type: 3}
+      propertyPath: m_Name
+      value: Staff
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -277,11 +301,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 5f031b46ef4f4be4d913cd4f4fae7c21,
-        type: 3}
-      propertyPath: m_Name
-      value: Staff
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f031b46ef4f4be4d913cd4f4fae7c21, type: 3}
 --- !u!1 &4578924205146911295 stripped
@@ -303,6 +322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5524358030078693882}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 1d46306cb6e44034a85790c55319c753,
+        type: 3}
+      propertyPath: m_Name
+      value: Dresden
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1d46306cb6e44034a85790c55319c753,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,11 +396,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 1d46306cb6e44034a85790c55319c753,
-        type: 3}
-      propertyPath: m_Name
-      value: Dresden
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d46306cb6e44034a85790c55319c753, type: 3}
