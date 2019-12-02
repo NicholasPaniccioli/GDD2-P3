@@ -43205,6 +43205,11 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[219].second.m_ColliderType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8574871310623223783, guid: e8c39d5f132a0034095075e0d8774715,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c39d5f132a0034095075e0d8774715, type: 3}
 --- !u!1001 &322939778
@@ -44304,6 +44309,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5524358030078693886, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 322939779}
+    - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 322939779}
