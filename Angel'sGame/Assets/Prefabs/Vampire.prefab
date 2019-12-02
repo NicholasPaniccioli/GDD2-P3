@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2
-  maxHealth: 100
+  maxHealth: 30
   iFrameDuration: 1
+  combatManager: {fileID: 0}
   range: 10
   dragForce: 0.8
 --- !u!114 &8310355932110064751
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494673164880459446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d59ad6dd020c4ee4ab7795a23338dde0, type: 3}
   m_Name: 
