@@ -24,7 +24,7 @@ public class Fireball : Ability
     void Update()
     {
         gameObject.transform.position += crosshairPosition * maxSpeed * Time.deltaTime;
-        if (initializationTime + duration <= Time.time)
+        if (initializationTime + duration <= Time.timeSinceLevelLoad)
         {
             combatManager.removeAllyDamageSource(gameObject);
             Destroy(gameObject);
