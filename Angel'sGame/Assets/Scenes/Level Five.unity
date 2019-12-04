@@ -49662,12 +49662,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5524358030078693886, guid: 473dc55005e583c40b1ec83e30dbdee1,
-        type: 3}
+    - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1146024826}
-    - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
+      objectReference: {fileID: 1146024828}
+    - target: {fileID: 5524358030078693886, guid: 473dc55005e583c40b1ec83e30dbdee1,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1146024826}
@@ -50164,6 +50164,12 @@ GameObject:
 --- !u!20 &1146024827 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3318459071930738900, guid: c37ff1cb875be104884c1fde82454b1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1146024825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1146024828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3318459072338110159, guid: c37ff1cb875be104884c1fde82454b1b,
     type: 3}
   m_PrefabInstance: {fileID: 1146024825}
   m_PrefabAsset: {fileID: 0}

@@ -15,7 +15,7 @@ public class Fireball : Ability
     void Start()
     {
         crosshairPosition = staff.transform.right;
-        initializationTime = Time.timeSinceLevelLoad;
+        initializationTime = Time.time;
         combatManager = GameObject.Find("Combat Manager").GetComponent<CombatManager>();
         combatManager.addAllyDamageSource(gameObject);
     }
@@ -24,7 +24,7 @@ public class Fireball : Ability
     void Update()
     {
         gameObject.transform.position += crosshairPosition * maxSpeed * Time.deltaTime;
-        if (initializationTime + duration <= Time.timeSinceLevelLoad)
+        if (initializationTime + duration <= Time.time)
         {
             combatManager.removeAllyDamageSource(gameObject);
             Destroy(gameObject);
