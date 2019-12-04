@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 475970042}
     - target: {fileID: 5524358030078693885, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
       propertyPath: AOECoolDown
@@ -529,10 +533,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 475970042}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
 --- !u!1001 &350150720
@@ -675,7 +675,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c37ff1cb875be104884c1fde82454b1b, type: 3}
 --- !u!1 &475970042 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3318459072181945882, guid: c37ff1cb875be104884c1fde82454b1b,
+  m_CorrespondingSourceObject: {fileID: 3318459072338110159, guid: c37ff1cb875be104884c1fde82454b1b,
     type: 3}
   m_PrefabInstance: {fileID: 475970041}
   m_PrefabAsset: {fileID: 0}
