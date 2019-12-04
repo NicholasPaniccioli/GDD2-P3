@@ -21,6 +21,9 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float maxHealth = 100, iFrameDuration = 1;
     [SerializeField]
+    private float maxControl = 100, bufferPoint = 25, controlTimer;
+    private float control;
+    [SerializeField]
     private GameObject healthBar;
     private Renderer dresdenRenderer;
     private float health;
@@ -144,5 +147,31 @@ public class Player : MonoBehaviour {
         health += healAmount;
         if (health > maxHealth)
             health = maxHealth;
+    }
+
+    // Increase the amount of Control
+    public void IncreaseControl(float amount)
+    {
+        if (control + amount > maxControl)
+        {
+            control = maxControl;  // prevent Control from going below 0
+            // Game Over because the player lost control
+        }
+        else
+        {
+            control += amount;    // decrease Control by amount
+        }
+        Debug.Log("Control Amount: " + control);
+    }
+
+    // Second Option to Decrease Control (probably the better version)
+    public void DecreseControl2(float amount)
+    {
+        if (control % bufferPoint > 0)
+        {
+            control--;
+        }
+
+        Debug.Log("Control Amount: " + control);
     }
 }

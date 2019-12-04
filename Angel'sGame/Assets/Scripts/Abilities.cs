@@ -18,6 +18,7 @@ public class Abilities : MonoBehaviour
     private float healTimeStamp;    // time stamp for heal
     private float basicTimeStamp;   // time stamp for basic attack
     private float AOETimeStamp;     // time stamp for AOE attack
+    private Player player;
 
     // Bars
     private GameObject healBar;
@@ -41,6 +42,7 @@ public class Abilities : MonoBehaviour
         healBar = GameObject.Find("CoolDownH");
         fireBar = GameObject.Find("CoolDownF");
         pauseObj = GameObject.Find("PauseManager");
+        player = GameObject.Find("Dresden").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -67,7 +69,7 @@ public class Abilities : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q) && healTimeStamp <= Time.time)    // heal
             {
                 gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
-                gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
+               player.IncreaseControl(5f);
                 healTimeStamp = Time.time + healCoolDown;
             }
 
