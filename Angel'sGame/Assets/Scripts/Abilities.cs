@@ -61,7 +61,7 @@ public class Abilities : MonoBehaviour
             if (Input.GetMouseButtonDown(1) && fireTimeStamp <= Time.time)// fireball
             {
                 Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation).GetComponent<Fireball>().staff = staff;
-                gameObject.GetComponent<ControlMeter>().IncreaseControl(5f);
+                player.IncreaseControl(30f);
                 fireTimeStamp = Time.time + fireBallCoolDown;
             }
 
@@ -69,7 +69,7 @@ public class Abilities : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q) && healTimeStamp <= Time.time)    // heal
             {
                 gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
-               player.IncreaseControl(5f);
+                player.IncreaseControl(5f);
                 healTimeStamp = Time.time + healCoolDown;
             }
 

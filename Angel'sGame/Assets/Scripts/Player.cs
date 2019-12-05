@@ -16,6 +16,14 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float dragForce = 0.8f, maxSpeed = 3,speedMod = 1;
 
+    //Demon movement control
+    private Vector3 demonMove;
+    private float demonAngleMove;
+
+    //demon staff control
+    private float demonAngleStaff, perlinY;
+    private bool flag;//flag variable to determine if demonAngleStaff needs to be set
+
     //  Stats
     [Header("Stats")]
     [SerializeField]
@@ -40,6 +48,10 @@ public class Player : MonoBehaviour {
         dresden = gameObject.transform.GetChild(0).gameObject;
         wallCollider = GetComponentInChildren<CircleCollider2D>();
 
+        //Demon Control
+        demonMove = Vector3.zero;
+        demonAngleMove = 0;
+
         //  Stats
         health = maxHealth;
         dresdenRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
@@ -58,14 +70,31 @@ public class Player : MonoBehaviour {
     /// Rotate Dresden's staff
     /// </summary>
     private void Rotate() {
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float angleOfRotation = Mathf.Rad2Deg * Mathf.Atan2(mouseWorldPos.y - staff.transform.position.y, mouseWorldPos.x - staff.transform.position.x);
-        staff.transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
+        if (control < 75)
+        {
+            flag = false;
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float angleOfRotation = Mathf.Rad2Deg * Mathf.Atan2(mouseWorldPos.y - staff.transform.position.y, mouseWorldPos.x - staff.transform.position.x);
+            staff.transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
 
-        if (Input.GetKeyDown(KeyCode.P))
-            debug = !debug;
-        if (debug)
-            DrawDebug();
+            if (Input.GetKeyDown(KeyCode.P))
+                debug = !debug;
+            if (debug)
+                DrawDebug();
+        }
+        else
+        {
+            if (!flag)
+            {
+                demonAngleStaff = staff.transform.rotation.z;//sets the starting angle of the staff to the current angle
+                flag = true;
+                perlinY = Random.Range(0.0f, 100.0f);//gets a random start so the perlin noise is different each time
+            }
+            float newAngle = (Mathf.PerlinNoise(Time.time * 1.0f, perlinY) * 5) - 2.5f;
+            demonAngleStaff += newAngle;
+            staff.transform.rotation = Quaternion.Euler(0, 0, demonAngleStaff);
+            flag = true;
+        }
     }
 
     /// <summary>
@@ -96,7 +125,23 @@ public class Player : MonoBehaviour {
             velocity += Vector3.right * speedMod;
             dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-
+        if (control >= 25)
+        {
+            if (demonMove == Vector3.zero)
+            {
+                if (velocity == Vector3.zero)//makes sure the demon takes control, even if the player isn't moving
+                    demonMove = Vector3.right;
+                else
+                    demonMove = velocity;
+            }
+            else
+            {
+                int newAngle = (int)Random.Range(demonAngleMove - 5, demonAngleMove + 5);
+                demonMove = Quaternion.AngleAxis(newAngle, Vector3.forward) * demonMove;
+                demonAngleMove = newAngle;
+                velocity += demonMove;
+            }
+        }
         //  Deceleration
         velocity *= dragForce;
         if (velocity.magnitude <= 0.1)
