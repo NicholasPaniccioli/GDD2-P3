@@ -5,6 +5,9 @@ using UnityEngine;
 public class Vampire : Enemy
 {
     private GameObject dresden;
+    private Animator animator;
+    private bool isRunning;
+    private bool isDead;
     public float range;
     [SerializeField]
     private float dragForce = 0.8f;
@@ -13,6 +16,7 @@ public class Vampire : Enemy
     void Start()
     {
         dresden = GameObject.Find("Dresden");
+        animator = gameObject.GetComponent<Animator>();
         base.Start();
     }
 
