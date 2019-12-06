@@ -6827,12 +6827,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &702791976 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2377643984156799959, guid: 673693bbdfa64224280ecbe5a4c89f3f,
+--- !u!114 &702791977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2377643984156799977, guid: 673693bbdfa64224280ecbe5a4c89f3f,
     type: 3}
   m_PrefabInstance: {fileID: 2377643983775412745}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb050155a8743f744b1484c4962701b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &738311091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7277,8 +7283,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -7338,12 +7344,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154901736}
   m_CullTransparentMesh: 0
---- !u!1 &1240957376 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3318459072181945882, guid: c37ff1cb875be104884c1fde82454b1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3318459072232677779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1242247835
 GameObject:
   m_ObjectHideFlags: 0
@@ -10087,8 +10087,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -10109,12 +10109,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 702791976}
-        m_MethodName: 
+      - m_Target: {fileID: 702791977}
+        m_MethodName: ResumeButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
