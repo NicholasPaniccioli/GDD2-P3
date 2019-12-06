@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
     private float maxControl = 100, bufferPoint = 25, controlTimer;
     private float control;
     [SerializeField]
-    private GameObject healthBar;
+    private GameObject healthBar, controlBar;
     private Renderer dresdenRenderer;
     private float health;
     private float iFrameTimeStamp;
@@ -64,6 +64,7 @@ public class Player : MonoBehaviour {
         Rotate();
         HandleMovement();
         UpdateHealth();
+        UpdateControl();
     }
 
     /// <summary>
@@ -164,6 +165,15 @@ public class Player : MonoBehaviour {
             healthBar.transform.localScale.z);
         if (iFrameTimeStamp <= Time.time)
             dresdenRenderer.material.color = Color.white;
+    }
+    /// <summary>
+    /// Control update
+    /// </summary>
+    private void UpdateControl() {
+        controlBar.transform.localScale = new Vector3
+            (control / maxControl, 
+            controlBar.transform.localScale.y,
+            controlBar.transform.localScale.z);
     }
 
     /// <summary>
