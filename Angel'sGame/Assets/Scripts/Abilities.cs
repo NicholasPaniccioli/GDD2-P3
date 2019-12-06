@@ -31,9 +31,6 @@ public class Abilities : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = gameObject.GetComponent<Health>();
-        controlMeter = gameObject.GetComponent<ControlMeter>();
-
         fireTimeStamp = Time.time;
         healTimeStamp = Time.time;
         basicTimeStamp = Time.time;
