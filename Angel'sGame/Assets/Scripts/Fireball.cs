@@ -15,7 +15,7 @@ public class Fireball : Ability
     void Start()
     {
         crosshairPosition = staff.transform.right;
-        initializationTime = Time.timeSinceLevelLoad;
+        initializationTime = Time.time;
         combatManager = GameObject.Find("Combat Manager").GetComponent<CombatManager>();
         combatManager.addAllyDamageSource(gameObject);
     }

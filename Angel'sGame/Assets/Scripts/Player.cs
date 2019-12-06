@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     //  Movement
     private Vector3 velocity;
     private GameObject dresden;
+    private CircleCollider2D wallCollider;
     [Header("Movement")]
     [SerializeField]
     private float dragForce = 0.8f, maxSpeed = 3,speedMod = 1;
@@ -19,6 +20,9 @@ public class Player : MonoBehaviour {
     [Header("Stats")]
     [SerializeField]
     private float maxHealth = 100, iFrameDuration = 1;
+    [SerializeField]
+    private float maxControl = 100, bufferPoint = 25, controlTimer;
+    private float control;
     [SerializeField]
     private GameObject healthBar;
     private Renderer dresdenRenderer;
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour {
         //  Movement
         velocity = Vector3.zero;
         dresden = gameObject.transform.GetChild(0).gameObject;
+        wallCollider = GetComponentInChildren<CircleCollider2D>();
 
         //  Stats
         health = maxHealth;
@@ -99,7 +104,9 @@ public class Player : MonoBehaviour {
 
         //  Max velocity
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-        transform.position += velocity * Time.deltaTime;
+        wallCollider.transform.position += velocity * Time.deltaTime;
+        transform.position = wallCollider.transform.position;
+        wallCollider.transform.position = transform.position;
     }
 
     /// <summary>
@@ -140,5 +147,31 @@ public class Player : MonoBehaviour {
         health += healAmount;
         if (health > maxHealth)
             health = maxHealth;
+    }
+
+    // Increase the amount of Control
+    public void IncreaseControl(float amount)
+    {
+        if (control + amount > maxControl)
+        {
+            control = maxControl;  // prevent Control from going below 0
+            // Game Over because the player lost control
+        }
+        else
+        {
+            control += amount;    // decrease Control by amount
+        }
+        Debug.Log("Control Amount: " + control);
+    }
+
+    // Second Option to Decrease Control (probably the better version)
+    public void DecreseControl2(float amount)
+    {
+        if (control % bufferPoint > 0)
+        {
+            control--;
+        }
+
+        Debug.Log("Control Amount: " + control);
     }
 }

@@ -195,6 +195,12 @@ BoxCollider2D:
     type: 3}
   m_PrefabInstance: {fileID: 62436875}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &258185479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3318459072338110159, guid: c37ff1cb875be104884c1fde82454b1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3318459072232677779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &302205255 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3318459071930738900, guid: c37ff1cb875be104884c1fde82454b1b,
@@ -11458,7 +11464,7 @@ PrefabInstance:
     - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1240957376}
+      objectReference: {fileID: 258185479}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
 --- !u!1 &1986004104 stripped
