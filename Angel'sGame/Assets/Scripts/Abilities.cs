@@ -66,12 +66,12 @@ public class Abilities : MonoBehaviour
             }
 
             // Q
-            if (Input.GetKeyDown(KeyCode.Q) && healTimeStamp <= Time.time)    // heal
-            {
-                gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
-                player.IncreaseControl(5f);
-                healTimeStamp = Time.time + healCoolDown;
-            }
+            //if (Input.GetKeyDown(KeyCode.Q) && healTimeStamp <= Time.time)    // heal
+            //{
+            //    gameObject.GetComponent<Health>().Heal(10f);   // heal the player by 10 points;
+            //    player.IncreaseControl(5f);
+            //    healTimeStamp = Time.time + healCoolDown;
+            //}
 
             // E
             if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
