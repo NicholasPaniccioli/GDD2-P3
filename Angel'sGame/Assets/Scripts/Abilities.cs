@@ -7,7 +7,7 @@ public class Abilities : MonoBehaviour
     Health health;
     ControlMeter controlMeter;
     [SerializeField]
-    private GameObject basicAttack, fireball, staff;
+    private GameObject basicAttack, fireball, AOE, staff;
 
     // Cool Downs
     [SerializeField]
@@ -72,12 +72,12 @@ public class Abilities : MonoBehaviour
             }
 
             // E
-            if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
-            {
-                Debug.Log("AOE Used");
-                // add AOE attack code here
-                player.IncreaseControl(15f);
-            }
+            //if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
+            //{
+            //    Debug.Log("AOE Used");
+            //    Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation);
+            //    player.IncreaseControl(15f);
+            //}
 
             // Bars Code
             if (healTimeStamp <= Time.time) // heal
