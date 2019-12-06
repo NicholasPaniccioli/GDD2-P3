@@ -92,7 +92,7 @@ public abstract class Enemy : MonoBehaviour {
         }
         
         iFrameTimeStamp = Time.time + iFrameDuration;
-        gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
+        gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;    // flash red when hit
     }
 
     /// <summary>
