@@ -523,6 +523,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 475970042}
+    - target: {fileID: 1986004113, guid: 473dc55005e583c40b1ec83e30dbdee1, type: 3}
+      propertyPath: speedMod
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5524358030078693885, guid: 473dc55005e583c40b1ec83e30dbdee1,
         type: 3}
       propertyPath: AOECoolDown
