@@ -18,7 +18,9 @@ public class Player : MonoBehaviour {
     private CircleCollider2D wallCollider;
     [Header("Movement")]
     [SerializeField]
-    private float dragForce = 0.8f, maxSpeed = 3,speedMod = 1;
+    private float dragForce = 0.8f;
+    [SerializeField]
+    private float maxSpeed = 3,speedMod = 1;
 
     //Demon movement control
     private Vector3 demonMove;
@@ -31,12 +33,12 @@ public class Player : MonoBehaviour {
     //  Stats
     [Header("Stats")]
     [SerializeField]
-    private float maxHealth = 100, iFrameDuration = 1;
+    private float maxHealth = 100;
     [SerializeField]
-    private float maxControl = 100, bufferPoint = 25, controlTimer;
+    private float maxControl = 100, bufferPoint = 25, controlTimer, iFrameDuration = 1;
     private float control;
     [SerializeField]
-    private GameObject healthBar;
+    private GameObject healthBar, controlBar;
     private Renderer dresdenRenderer;
     private float health;
     private float iFrameTimeStamp;
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour {
         Rotate();
         HandleMovement();
         UpdateHealth();
+        UpdateControl();
     }
 
     /// <summary>
@@ -181,6 +184,15 @@ public class Player : MonoBehaviour {
         if (iFrameTimeStamp <= Time.time)
             dresdenRenderer.material.color = Color.white;
     }
+    /// <summary>
+    /// Control update
+    /// </summary>
+    private void UpdateControl() {
+        controlBar.transform.localScale = new Vector3
+            (control / maxControl, 
+            controlBar.transform.localScale.y,
+            controlBar.transform.localScale.z);
+    }
 
     /// <summary>
     /// Subtract damage amount from total health
@@ -191,6 +203,7 @@ public class Player : MonoBehaviour {
         if (health <= 0)
             Die();
         iFrameTimeStamp = Time.time + iFrameDuration;
+        gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;    // flash red when hit
     }
 
     /// <summary>

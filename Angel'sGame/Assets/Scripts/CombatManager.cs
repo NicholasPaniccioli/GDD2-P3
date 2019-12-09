@@ -5,8 +5,6 @@ using UnityEngine;
 public class CombatManager : Singleton<MonoBehaviour> {
     [SerializeField]
     private Player player;
-    [SerializeField]
-    private float iFrameDuration = 1;
     
     private List<Enemy> enemies;
     private List<GameObject> allyDamageSources;
@@ -29,9 +27,6 @@ public class CombatManager : Singleton<MonoBehaviour> {
                 continue;
             if (enemies[i].gameObject.GetComponent<BoxCollider>().bounds.Intersects(player.GetComponent<BoxCollider>().bounds)) {
                 if (player.IFrameTimeStamp <= Time.time) {
-                    //  Player is being hit by the demon, take damage
-                    //player.GetComponent<Health>().TakeDamage(10);
-                    //player.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
                     player.TakeDamage(10);
                     enemies[i].Intersecting = true;
                 }
@@ -41,10 +36,7 @@ public class CombatManager : Singleton<MonoBehaviour> {
 
             foreach(GameObject d in allyDamageSources) {
                 if(d.GetComponent<SphereCollider>().bounds.Intersects(enemies[i].GetComponent<BoxCollider>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(enemies[i].GetComponent<BoxCollider>().bounds.center)) {
-                    //  Enemy Colliding with damage source, damage will be handled differently later
                     if (enemies[i].IFrameTimeStamp <= Time.time) {
-                        //e.gameObject.GetComponent<Health>().TakeDamage(d.GetComponent<Ability>().Damage);
-                        //e.GetComponent<Health>().iFrameTimeStamp = Time.time + iFrameDuration;
                         enemies[i].TakeDamage(d.GetComponent<Ability>().Damage);
                         
                     }
