@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    //  Animations
+    private Animator animator;
+    private bool isRunning;
+
     //  Rotation
     private bool debug = false;
     private GameObject staff;
@@ -40,6 +44,9 @@ public class Player : MonoBehaviour {
     public float Health { get { return health; } }
 
     void Start() {
+        //  Animations
+        animator = gameObject.GetComponent<Animator>();
+
         //  Rotation
         staff = gameObject.transform.GetChild(1).gameObject;
 
@@ -152,6 +159,15 @@ public class Player : MonoBehaviour {
         wallCollider.transform.position += velocity * Time.deltaTime;
         transform.position = wallCollider.transform.position;
         wallCollider.transform.position = transform.position;
+
+        if(velocity.magnitude > 0)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
     }
 
     /// <summary>

@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 5486436479321623537, guid: 70e1d9b2e8f7ba44c9ce3243f260c7e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5486436479321623537, guid: 70e1d9b2e8f7ba44c9ce3243f260c7e6,
         type: 3}
@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &350163451
 GameObject:
@@ -11591,7 +11591,7 @@ Transform:
   - {fileID: 1715475193}
   - {fileID: 350163452}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2377643983775412745
 PrefabInstance:
@@ -11605,6 +11605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2377643984156799977, guid: 673693bbdfa64224280ecbe5a4c89f3f,
+        type: 3}
+      propertyPath: pMenu
+      value: 
+      objectReference: {fileID: 826135868}
     - target: {fileID: 2377643984156799958, guid: 673693bbdfa64224280ecbe5a4c89f3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11643,7 +11648,7 @@ PrefabInstance:
     - target: {fileID: 2377643984156799958, guid: 673693bbdfa64224280ecbe5a4c89f3f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2377643984156799958, guid: 673693bbdfa64224280ecbe5a4c89f3f,
         type: 3}
@@ -11660,11 +11665,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2377643984156799977, guid: 673693bbdfa64224280ecbe5a4c89f3f,
-        type: 3}
-      propertyPath: pMenu
-      value: 
-      objectReference: {fileID: 826135868}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673693bbdfa64224280ecbe5a4c89f3f, type: 3}
 --- !u!1001 &3318459072232677779

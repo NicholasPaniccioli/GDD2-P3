@@ -26,10 +26,12 @@ public class Vampire : Enemy
         if (Vector3.Distance(dresden.transform.position, transform.position) < range && !intersecting)
         {
             CalculateSteeringForce();
+            isRunning = true;
         }
         else
         {
             //IDLE ANIMATION
+            isRunning = false;
         }
         EnemyPosition = transform.position;
         base.Update();
