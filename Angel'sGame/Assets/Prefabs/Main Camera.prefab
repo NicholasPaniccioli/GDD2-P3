@@ -61,7 +61,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -386,11 +386,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3318459071930738907}
     m_Modifications:
-    - target: {fileID: 2226123488459023140, guid: 8d1136165521828409a29ae02157ad5d,
-        type: 3}
-      propertyPath: m_Name
-      value: HealAb
-      objectReference: {fileID: 0}
     - target: {fileID: 908656547919110935, guid: 8d1136165521828409a29ae02157ad5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -446,6 +441,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2226123488459023140, guid: 8d1136165521828409a29ae02157ad5d,
+        type: 3}
+      propertyPath: m_Name
+      value: HealAb
+      objectReference: {fileID: 0}
     - target: {fileID: 6795720943617614633, guid: 8d1136165521828409a29ae02157ad5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -471,11 +471,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3318459071930738907}
     m_Modifications:
-    - target: {fileID: 1336735089489673222, guid: 7905be73fe8498f45b746d48b071180b,
-        type: 3}
-      propertyPath: m_Name
-      value: ControlBar
-      objectReference: {fileID: 0}
     - target: {fileID: 1336735089489673221, guid: 7905be73fe8498f45b746d48b071180b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -530,6 +525,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336735089489673222, guid: 7905be73fe8498f45b746d48b071180b,
+        type: 3}
+      propertyPath: m_Name
+      value: ControlBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7905be73fe8498f45b746d48b071180b, type: 3}
