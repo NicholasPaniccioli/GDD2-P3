@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -227,7 +228,7 @@ public class Player : MonoBehaviour {
     /// 死ぬ
     /// </summary>
     private void Die() {
-        Destroy(gameObject);
+        SceneManager.LoadScene("LossScene");
     }
 
     /// <summary>
