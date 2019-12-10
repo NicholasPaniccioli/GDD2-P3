@@ -85,7 +85,7 @@ public class Player : MonoBehaviour {
     /// Rotate Dresden's staff
     /// </summary>
     private void Rotate() {
-        if (control < 75)
+        if (!demonOn || control < 75)
         {
             flag = false;
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour {
             velocity += Vector3.right * speedMod;
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-        if (control >= 25)
+        if (demonOn && control >= 25)
         {
             if (demonMove == Vector3.zero)
             {
