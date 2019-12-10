@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3377607085791652574}
   - component: {fileID: 3377607085791652573}
   - component: {fileID: 3377607085791652572}
-  - component: {fileID: 3377607085791652575}
+  - component: {fileID: -3746991033473191071}
   m_Layer: 0
   m_Name: AOE
   m_TagString: allyDamageSource
@@ -102,19 +102,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cf0ec888c0f36174fbac2f512baa2306, type: 3}
   - {fileID: 21300000, guid: d889a72e4d36b464582f87fc2fd58fe1, type: 3}
   - {fileID: 21300000, guid: 1c06ff1f2a62d7a44954cde1c8365ade, type: 3}
---- !u!58 &3377607085791652575
-CircleCollider2D:
+--- !u!135 &-3746991033473191071
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3377607085791652563}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
