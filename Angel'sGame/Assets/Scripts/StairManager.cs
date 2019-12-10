@@ -45,7 +45,7 @@ public class StairManager : MonoBehaviour
             }
             else if(CheckScene() == "Level Five")
             {
-                SceneManager.LoadScene("Level Six");
+                SceneManager.LoadScene("WinScene");
             }
         }
     }
