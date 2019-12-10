@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour {
     protected void Update() {
         //  Clear iFrame display if duration ends
         if(iFrameTimeStamp <= Time.time) {
-            gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.white;
+            gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material.color = Color.white;
         }
     }
 
@@ -92,7 +92,7 @@ public abstract class Enemy : MonoBehaviour {
         }
         
         iFrameTimeStamp = Time.time + iFrameDuration;
-        gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;    // flash red when hit
+        gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material.color = Color.red;    // flash red when hit
     }
 
     /// <summary>

@@ -17,6 +17,8 @@ public class Vampire : Enemy
     {
         dresden = GameObject.Find("Dresden");
         animator = gameObject.GetComponent<Animator>();
+        isRunning = false;
+        isDead = false;
         base.Start();
     }
 
@@ -26,12 +28,20 @@ public class Vampire : Enemy
         if (Vector3.Distance(dresden.transform.position, transform.position) < range && !intersecting)
         {
             CalculateSteeringForce();
-            isRunning = true;
+            if (!isRunning)
+            {
+                animator.SetBool("isRunning", true);
+                isRunning = true;
+            }
         }
         else
         {
             //IDLE ANIMATION
-            isRunning = false;
+            if(isRunning)
+            {
+                animator.SetBool("isRunning", false);
+                isRunning = false;
+            }
         }
         EnemyPosition = transform.position;
         base.Update();
