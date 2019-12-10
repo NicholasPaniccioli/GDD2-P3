@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1410220672}
   m_LocalRotation: {x: -0, y: -0, z: 2.5829647e-10, w: 1}
   m_LocalPosition: {x: 0.002, y: 0.007, z: 8}
-  m_LocalScale: {x: 2.627, y: 2.084, z: 1}
+  m_LocalScale: {x: 2.7255127, y: 2.084, z: 1}
   m_Children: []
   m_Father: {fileID: 3318459071930738907}
   m_RootOrder: 5
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f36cc7a65ec56df45bd62376e5772e9a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -466,6 +466,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3318459071930738907}
     m_Modifications:
+    - target: {fileID: 2226123488459023140, guid: 8d1136165521828409a29ae02157ad5d,
+        type: 3}
+      propertyPath: m_Name
+      value: HealAb
+      objectReference: {fileID: 0}
     - target: {fileID: 908656547919110935, guid: 8d1136165521828409a29ae02157ad5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -521,11 +526,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2226123488459023140, guid: 8d1136165521828409a29ae02157ad5d,
-        type: 3}
-      propertyPath: m_Name
-      value: HealAb
-      objectReference: {fileID: 0}
     - target: {fileID: 6795720943617614633, guid: 8d1136165521828409a29ae02157ad5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -551,6 +551,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3318459071930738907}
     m_Modifications:
+    - target: {fileID: 1336735089489673222, guid: 7905be73fe8498f45b746d48b071180b,
+        type: 3}
+      propertyPath: m_Name
+      value: ControlBar
+      objectReference: {fileID: 0}
     - target: {fileID: 1336735089489673221, guid: 7905be73fe8498f45b746d48b071180b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -605,11 +610,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1336735089489673222, guid: 7905be73fe8498f45b746d48b071180b,
-        type: 3}
-      propertyPath: m_Name
-      value: ControlBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7905be73fe8498f45b746d48b071180b, type: 3}
