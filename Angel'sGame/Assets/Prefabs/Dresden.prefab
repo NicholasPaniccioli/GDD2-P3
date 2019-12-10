@@ -433,6 +433,7 @@ MonoBehaviour:
   dragForce: 0.8
   maxSpeed: 3
   speedMod: 2.5
+  AOEStop: 0
   maxHealth: 100
   maxControl: 100
   bufferPoint: 25
@@ -461,7 +462,7 @@ MonoBehaviour:
   fireBallCoolDown: 3
   healCoolDown: 5
   basicCoolDown: 0.8
-  AOECoolDown: 0
+  AOECoolDown: 8
 --- !u!1 &2747513066551184096
 GameObject:
   m_ObjectHideFlags: 0
