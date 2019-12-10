@@ -258,6 +258,7 @@ public class Player : MonoBehaviour {
     /// 死ぬ
     /// </summary>
     private void Die() {
+        Object.Destroy(GameObject.Find("Canvas"));
         SceneManager.LoadScene("LossScene");
     }
 

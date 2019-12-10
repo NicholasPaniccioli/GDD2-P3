@@ -55,7 +55,9 @@ public class Timer : MonoBehaviour
         //Transition to loss screen
         loseGame = true;    // set lose game condition to true
         //GameObject.Find("FailSound").GetComponent<AudioSource>().Play();
+        Object.Destroy(this.transform.parent.gameObject);   // destroy Canvas when time runs out to prevent multiple canvases.
         SceneManager.LoadScene("LossScene");
+        
 
     }
 
