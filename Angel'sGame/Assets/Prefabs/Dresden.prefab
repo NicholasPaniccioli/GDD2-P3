@@ -456,7 +456,7 @@ MonoBehaviour:
     type: 3}
   fireball: {fileID: 2820541784554012870, guid: c55a46a05dd6ba04f940a5640268b13b,
     type: 3}
-  AOE: {fileID: 0}
+  AOE: {fileID: 3377607085791652563, guid: 5d683086a66cb5c4b9f7cbe9d8a29fec, type: 3}
   staff: {fileID: 2975422287830218051}
   fireBallCoolDown: 3
   healCoolDown: 5
