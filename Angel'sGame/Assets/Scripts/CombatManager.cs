@@ -8,10 +8,13 @@ public class CombatManager : Singleton<MonoBehaviour> {
     
     private List<Enemy> enemies;
     private List<GameObject> allyDamageSources;
+
+    private AudioManager audioManager;
     // Start is called before the first frame update
     void Start() {
         enemies = new List<Enemy>();
         allyDamageSources = new List<GameObject>(); //  Will be entity
+        audioManager = GameObject.Find("Main Camera").GetComponent<AudioManager>();
 
         //  Will be enemies
         foreach(Enemy e in GameObject.FindObjectsOfType<Enemy>())
@@ -28,6 +31,7 @@ public class CombatManager : Singleton<MonoBehaviour> {
             if (enemies[i].gameObject.GetComponent<BoxCollider>().bounds.Intersects(player.GetComponent<BoxCollider>().bounds)) {
                 if (player.IFrameTimeStamp <= Time.time) {
                     player.TakeDamage(10);
+                    audioManager.PlayHurt();
                     enemies[i].Intersecting = true;
                 }
             }
@@ -38,7 +42,7 @@ public class CombatManager : Singleton<MonoBehaviour> {
                 if(d.GetComponent<SphereCollider>().bounds.Intersects(enemies[i].GetComponent<BoxCollider>().bounds) || d.GetComponent<SphereCollider>().bounds.Contains(enemies[i].GetComponent<BoxCollider>().bounds.center)) {
                     if (enemies[i].IFrameTimeStamp <= Time.time) {
                         enemies[i].TakeDamage(d.GetComponent<Ability>().Damage);
-                        
+                        audioManager.PlayHurt2();
                     }
                 }
             }

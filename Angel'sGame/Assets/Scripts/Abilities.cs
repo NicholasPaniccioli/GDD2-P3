@@ -18,6 +18,7 @@ public class Abilities : MonoBehaviour
     private float healTimeStamp;    // time stamp for heal
     private float basicTimeStamp;   // time stamp for basic attack
     private float AOETimeStamp;     // time stamp for AOE attack
+    private AudioManager audioManager;
     private Player player;
 
     // Bars
@@ -41,6 +42,7 @@ public class Abilities : MonoBehaviour
         AOEBar = GameObject.Find("CoolDownE");
         pauseObj = GameObject.Find("PauseManager");
         player = GameObject.Find("Dresden").GetComponent<Player>();
+        audioManager = GameObject.Find("Main Camera").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -51,15 +53,17 @@ public class Abilities : MonoBehaviour
             // left click
             if (Input.GetMouseButtonDown(0) && basicTimeStamp <= Time.time)//basic
             {
-                Instantiate<GameObject>(basicAttack, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center + gameObject.transform.GetChild(1).right, Quaternion.identity);
+                Instantiate<GameObject>(basicAttack, gameObject.transform.GetChild(2).GetComponent<Renderer>().bounds.center + gameObject.transform.GetChild(2).right, Quaternion.identity);
+                audioManager.PlayBasicAttack();
                 basicTimeStamp = Time.time + basicCoolDown;
             }
 
             // right click
             if (Input.GetMouseButtonDown(1) && fireTimeStamp <= Time.time)// fireball
             {
-                Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation).GetComponent<Fireball>().staff = staff;
+                Instantiate<GameObject>(fireball, gameObject.transform.GetChild(2).GetComponent<Renderer>().bounds.center, staff.transform.rotation).GetComponent<Fireball>().staff = staff;
                 player.IncreaseControl(10f);
+                audioManager.PlayFireballAttack();
                 fireTimeStamp = Time.time + fireBallCoolDown;
             }
 
@@ -68,6 +72,7 @@ public class Abilities : MonoBehaviour
             {
                 player.Heal(10f);   // heal the player by 10 points;
                 player.IncreaseControl(10f);
+                audioManager.PlayHeal();
                 healTimeStamp = Time.time + healCoolDown;
             }
 
@@ -75,7 +80,8 @@ public class Abilities : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
             {
                 AOETimeStamp = Time.time + AOECoolDown;
-                Instantiate<GameObject>(AOE, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation);
+                Instantiate<GameObject>(AOE, gameObject.transform.GetChild(2).GetComponent<Renderer>().bounds.center, staff.transform.rotation);
+                audioManager.PlayAoe();
                 player.IncreaseControl(15f);
             }
 
