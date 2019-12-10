@@ -19,18 +19,18 @@ public class AoE : Ability
     {
         initializationTime = Time.time;
         combatManager = GameObject.Find("Combat Manager").GetComponent<CombatManager>();
-        //combatManager.addAllyDamageSource(gameObject);
+        combatManager.addAllyDamageSource(gameObject);
         currentSprite = 0;
+        damage = float.MaxValue;
         renderer = GetComponent<SpriteRenderer>();
         footCollider = GameObject.Find("FeetCollider").GetComponent<CircleCollider2D>();
-        Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), footCollider);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (initializationTime + duration <= Time.time){
-            //combatManager.removeAllyDamageSource(gameObject);
+            combatManager.removeAllyDamageSource(gameObject);
             Destroy(gameObject);
         }
         if (animationFrameDuration < animationFrameTime) {
