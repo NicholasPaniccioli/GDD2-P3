@@ -48,13 +48,14 @@ public class Player : MonoBehaviour {
     void Start() {
         //  Animations
         animator = gameObject.GetComponent<Animator>();
+        isRunning = false;
 
         //  Rotation
-        staff = gameObject.transform.GetChild(1).gameObject;
+        staff = gameObject.transform.Find("Staff").gameObject;
 
         //  Movement
         velocity = Vector3.zero;
-        dresden = gameObject.transform.GetChild(0).gameObject;
+        dresden = gameObject.transform.Find("dresden").gameObject;
         wallCollider = GetComponentInChildren<CircleCollider2D>();
 
         //Demon Control
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour {
 
         //  Stats
         health = maxHealth;
-        dresdenRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
+        dresdenRenderer = gameObject.transform.Find("dresden").gameObject.GetComponent<Renderer>();
         if (healthBar == null)
             throw new MissingReferenceException("healthBar object not assigned");
         iFrameTimeStamp = Time.time;
@@ -163,13 +164,18 @@ public class Player : MonoBehaviour {
         transform.position = wallCollider.transform.position;
         wallCollider.transform.position = transform.position;
 
-        if(velocity.magnitude > 0)
+        if (animator.gameObject.activeSelf)
         {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
+            if (velocity.magnitude > 0 && !isRunning)
+            {
+                animator.SetBool("isRunning", true);
+                isRunning = true;
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+                isRunning = false;
+            }
         }
     }
 
