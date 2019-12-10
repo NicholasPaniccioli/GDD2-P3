@@ -16,6 +16,10 @@ public class StartManager : MonoBehaviour
         
     }
 
+    public void PlayButton()
+    {
+    }
+    
     
     //For button press to quit the enitre application
     public void QuitButton()
