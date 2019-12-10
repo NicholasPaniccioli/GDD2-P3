@@ -73,6 +73,7 @@ public class Player : MonoBehaviour {
         if (healthBar == null)
             throw new MissingReferenceException("healthBar object not assigned");
         iFrameTimeStamp = Time.time;
+        ScaleEffect();
     }
 
     void Update() {
@@ -316,5 +317,19 @@ public class Player : MonoBehaviour {
             }
         }
         coroutineOn = false;
+    }
+
+    private void ScaleEffect()
+    {
+        Transform effect = Camera.main.transform.Find("CameraEffect");
+        effect.localScale = new Vector3(1, 1, 1);
+
+        float width = demonEffectRenderer.sprite.bounds.size.x;
+        float height = demonEffectRenderer.sprite.bounds.size.y;
+
+        float worldScreenHeight = Camera.main.orthographicSize * 2.0f;
+        float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+
+        effect.localScale= new Vector3(worldScreenWidth / width, worldScreenHeight/height);
     }
 }
