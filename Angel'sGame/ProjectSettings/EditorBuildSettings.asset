@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Five.unity
     guid: cb4f146b10d25444a897bbbc159fe32f
   - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: c7421c0cda8b3de4d9a10d5b4002598f
+  - enabled: 1
     path: Assets/Scenes/LossScene.unity
     guid: 0f35c0664b402b74c8ba642f7db9d131
   m_configObjects: {}
