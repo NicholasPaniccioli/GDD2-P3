@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     private float dragForce = 0.8f;
     [SerializeField]
     private float maxSpeed = 3, speedMod = 1;
+    public bool AOEStop;
 
     //Demon movement control
     private Vector3 demonMove;
@@ -76,7 +77,12 @@ public class Player : MonoBehaviour {
 
     void Update() {
         Rotate();
-        HandleMovement();
+        if (!AOEStop)
+            HandleMovement();
+        else if (isRunning){
+            animator.SetBool("isRunning", false);
+            isRunning = false;
+        }
         UpdateHealth();
         UpdateControl();
     }
@@ -175,10 +181,9 @@ public class Player : MonoBehaviour {
         transform.position = wallCollider.transform.position;
         wallCollider.transform.position = transform.position;
 
-
         if (velocity.magnitude > 0)
         {
-            if (!isRunning)
+            if (!isRunning )
             {
                 animator.SetBool("isRunning", true);
                 isRunning = true;

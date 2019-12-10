@@ -13,6 +13,7 @@ public class AoE : Ability
     SpriteRenderer renderer;
     private int currentSprite;
     private CircleCollider2D footCollider;
+    private Player dresden;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,8 @@ public class AoE : Ability
         damage = float.MaxValue;
         renderer = GetComponent<SpriteRenderer>();
         footCollider = GameObject.Find("FeetCollider").GetComponent<CircleCollider2D>();
+        dresden = GameObject.Find("Dresden").GetComponent<Player>();
+        dresden.AOEStop = true;
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class AoE : Ability
         if (initializationTime + duration <= Time.time){
             combatManager.removeAllyDamageSource(gameObject);
             Destroy(gameObject);
+            dresden.AOEStop = false;
         }
         if (animationFrameDuration < animationFrameTime) {
             if (currentSprite+1==spriteList.Length)
