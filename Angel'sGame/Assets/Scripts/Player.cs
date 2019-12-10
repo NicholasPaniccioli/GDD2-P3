@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    //  Animations
-    private Animator animator;
-    private bool isRunning;
-
     //  Rotation
     private bool debug = false;
     private GameObject staff;
@@ -21,14 +17,17 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float dragForce = 0.8f;
     [SerializeField]
-    private float maxSpeed = 3,speedMod = 1;
+    private float maxSpeed = 3, speedMod = 1;
 
     //Demon movement control
     private Vector3 demonMove;
     private float demonAngleMove;
 
     //demon staff control
-    private float demonAngleStaff, perlinY;
+    private float demonAngleStaff, perlinY, demonResetTimer;
+    private float demonControlTimer, lastAbility;
+    private SpriteRenderer demonEffectRenderer;
+    private bool demonOn, coroutineOn;
     private bool flag;//flag variable to determine if demonAngleStaff needs to be set
 
     //  Stats
@@ -41,6 +40,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private GameObject healthBar, controlBar;
     private Renderer dresdenRenderer;
+    private bool isRunning;
+    private Animator animator;
     private float health;
     private float iFrameTimeStamp;
     public float IFrameTimeStamp { get { return iFrameTimeStamp; } }
@@ -61,6 +62,9 @@ public class Player : MonoBehaviour {
         //Demon Control
         demonMove = Vector3.zero;
         demonAngleMove = 0;
+        demonControlTimer = Time.time;
+        demonEffectRenderer = Camera.main.transform.Find("CameraEffect").GetComponent<SpriteRenderer>();
+        demonOn = false;
 
         //  Stats
         health = maxHealth;
