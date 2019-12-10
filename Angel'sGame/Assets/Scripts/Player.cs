@@ -205,11 +205,32 @@ public class Player : MonoBehaviour {
     /// <summary>
     /// Control update
     /// </summary>
-    private void UpdateControl() {
+    private void UpdateControl()
+    {
         controlBar.transform.localScale = new Vector3
             (control / maxControl, 
             controlBar.transform.localScale.y,
             controlBar.transform.localScale.z);
+        if (control > bufferPoint)//checks to see if the demon has any control over the player
+        {
+            if (10.0f + 5.0f * (control / maxControl) > Time.time % 20.0f)
+            {
+                if (!coroutineOn)
+                {
+                    StartCoroutine(DemonEffectFade(175.0f / 255.0f));
+                    demonOn = true;
+                }
+            }
+            else
+            {
+                if (!coroutineOn)
+                {
+                    StartCoroutine(DemonEffectFade(0));
+                    demonOn = false;
+                }
+            }
+        }
+
     }
 
     /// <summary>
@@ -265,5 +286,26 @@ public class Player : MonoBehaviour {
         }
 
         Debug.Log("Control Amount: " + control);
+    }
+
+
+    private IEnumerator DemonEffectFade(float targetOpacity)
+    {
+        coroutineOn = true;
+        while (demonEffectRenderer.color.a != targetOpacity)
+        {
+            yield return new WaitForSeconds(0.001f);
+            if (targetOpacity == 0)
+            {
+                if (demonEffectRenderer.color.a < 0) demonEffectRenderer.color = new Color(255, 255, 255, 0);
+                else demonEffectRenderer.color = new Color(255, 255, 255, (demonEffectRenderer.color.a * 255.0f - 2.5f) / 255.0f);
+            }
+            else
+            {
+                if (demonEffectRenderer.color.a > targetOpacity) demonEffectRenderer.color = new Color(255, 255, 255, targetOpacity);
+                else demonEffectRenderer.color = new Color(255, 255, 255, (demonEffectRenderer.color.a * 255.0f + 2.5f) / 255.0f);
+            }
+        }
+        coroutineOn = false;
     }
 }
