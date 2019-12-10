@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public Text countDown;
     public static bool winGame;
     public static bool loseGame;
-    //public GameObject gameOverScreen;
+    private string loseScreenName;
     private string levelName;   // name of the scene
 
     // Start is called before the first frame update
@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
         winGame = false;    // start the win game condition as false
         Time.timeScale = 1;
         levelName = SceneManager.GetActiveScene().name; // get the name of the currently active scene
+        DontDestroyOnLoad(this.transform.parent.gameObject);
     }
 
     // Update is called once per frame
@@ -54,27 +55,9 @@ public class Timer : MonoBehaviour
         //Transition to loss screen
         loseGame = true;    // set lose game condition to true
         //GameObject.Find("FailSound").GetComponent<AudioSource>().Play();
-        //GameOver(); // display the game over screen
-        Debug.Log("You lose! Christmas is ruined!");    // output a message to the console indicating loss
+        SceneManager.LoadScene("LossScene");
+
     }
-
-    //void GameOver()
-    //{
-    //    gameOverScreen.SetActive(true); // bring up the game over screen
-
-    //    if (loseGame)   // if the player loses
-    //    {
-    //        gameOverScreen.GetComponentInChildren<Text>().text = "You lose! Christmas is ruined!";  // display a lose message
-    //    }
-    //    if(winGame) // if the player wins
-    //    {
-    //        gameOverScreen.GetComponentInChildren<Text>().text = "You win!";    // display a win message
-
-    //    }
-
-    //    Time.timeScale = 0f;    // pause the game so that the player can't move
-    //    //paused = true;
-    //}
 
     // Reload the current scene
     public void Retry()
