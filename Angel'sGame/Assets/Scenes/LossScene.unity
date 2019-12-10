@@ -358,7 +358,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Failed to Stop The Red Court Campires from Reviving a Powerful Dragon!
+  m_Text: You Failed to Stop The Red Court Vampires from Reviving a Powerful Dragon!
 --- !u!222 &127383618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00091552734, y: 0.0022583008}
+  m_AnchoredPosition: {x: 0.0009765625, y: 0.0022583008}
   m_SizeDelta: {x: -944.36, y: -451.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815941770
