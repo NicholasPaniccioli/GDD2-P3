@@ -71,13 +71,13 @@ public class Abilities : MonoBehaviour
                 healTimeStamp = Time.time + healCoolDown;
             }
 
-            // E
-            //if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
-            //{
-            //    Debug.Log("AOE Used");
-            //    Instantiate<GameObject>(fireball, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation);
-            //    player.IncreaseControl(15f);
-            //}
+            //  E
+            if (Input.GetKeyDown(KeyCode.E) && AOETimeStamp <= Time.time)    // AOE
+            {
+                AOETimeStamp = Time.time + AOECoolDown;
+                Instantiate<GameObject>(AOE, gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.center, staff.transform.rotation);
+                player.IncreaseControl(15f);
+            }
 
             // Bars Code
             if (healTimeStamp <= Time.time) // heal

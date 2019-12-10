@@ -5,8 +5,6 @@ using UnityEngine;
 public class CombatManager : Singleton<MonoBehaviour> {
     [SerializeField]
     private Player player;
-    [SerializeField]
-    private float iFrameDuration = 1;
     
     private List<Enemy> enemies;
     private List<GameObject> allyDamageSources;

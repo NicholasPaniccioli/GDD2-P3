@@ -1,8 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+
+    //  Animations
+    private Animator animator;
+    private bool isRunning;
 
     //  Rotation
     private bool debug = false;
@@ -42,12 +47,15 @@ public class Player : MonoBehaviour {
     public float Health { get { return health; } }
 
     void Start() {
+        //  Animations
+        animator = gameObject.GetComponent<Animator>();
+        isRunning = false;
+
         //  Rotation
-        staff = gameObject.transform.GetChild(1).gameObject;
+        staff = gameObject.transform.Find("Staff").gameObject;
 
         //  Movement
         velocity = Vector3.zero;
-        dresden = gameObject.transform.GetChild(0).gameObject;
         wallCollider = GetComponentInChildren<CircleCollider2D>();
 
         //Demon Control
@@ -56,7 +64,7 @@ public class Player : MonoBehaviour {
 
         //  Stats
         health = maxHealth;
-        dresdenRenderer = gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>();
+        dresdenRenderer = gameObject.transform.Find("dresden").gameObject.GetComponent<Renderer>();
         if (healthBar == null)
             throw new MissingReferenceException("healthBar object not assigned");
         iFrameTimeStamp = Time.time;
@@ -111,22 +119,29 @@ public class Player : MonoBehaviour {
     /// <summary>
     /// Take button input and adjust velocity accordingly
     /// </summary>
-    private void HandleMovement() {
+    private void HandleMovement()
+    {
         //  Up/down
-        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
             velocity += Vector3.up * speedMod;
-            dresden.transform.rotation = Quaternion.Euler(0, 0, 0);
-        } else if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+            transform.rotation = Quaternion.Euler(-15, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
             velocity += Vector3.down * speedMod;
-            dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(15, 180, 0);
         }
         //  Left/right
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
             velocity += Vector3.left * speedMod;
-            dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
-        } else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
             velocity += Vector3.right * speedMod;
-            dresden.transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         if (control >= 25)
         {
@@ -155,6 +170,25 @@ public class Player : MonoBehaviour {
         wallCollider.transform.position += velocity * Time.deltaTime;
         transform.position = wallCollider.transform.position;
         wallCollider.transform.position = transform.position;
+
+
+        if (velocity.magnitude > 0)
+        {
+            if (!isRunning)
+            {
+                animator.SetBool("isRunning", true);
+                isRunning = true;
+            }
+        }
+        else
+        {
+            if (isRunning)
+            {
+                animator.SetBool("isRunning", false);
+                isRunning = false;
+            }
+        }
+
     }
 
     /// <summary>
@@ -187,14 +221,14 @@ public class Player : MonoBehaviour {
         if (health <= 0)
             Die();
         iFrameTimeStamp = Time.time + iFrameDuration;
-        gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;    // flash red when hit
+        dresdenRenderer.material.color = Color.red;    // flash red when hit
     }
 
     /// <summary>
     /// 死ぬ
     /// </summary>
     private void Die() {
-        Destroy(gameObject);
+        SceneManager.LoadScene("LossScene");
     }
 
     /// <summary>
