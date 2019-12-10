@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    //  Animations
-    private Animator animator;
-    private bool isRunning;
-
     //  Rotation
     private bool debug = false;
     private GameObject staff;
@@ -21,14 +17,18 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float dragForce = 0.8f;
     [SerializeField]
-    private float maxSpeed = 3,speedMod = 1;
+    private float maxSpeed = 3, speedMod = 1;
+    public bool AOEStop;
 
     //Demon movement control
     private Vector3 demonMove;
     private float demonAngleMove;
 
     //demon staff control
-    private float demonAngleStaff, perlinY;
+    private float demonAngleStaff, perlinY, demonResetTimer;
+    private float demonControlTimer, lastAbility;
+    private SpriteRenderer demonEffectRenderer;
+    private bool demonOn, coroutineOn;
     private bool flag;//flag variable to determine if demonAngleStaff needs to be set
 
     //  Stats
@@ -41,6 +41,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private GameObject healthBar, controlBar;
     private Renderer dresdenRenderer;
+    private bool isRunning;
+    private Animator animator;
     private float health;
     private float iFrameTimeStamp;
     public float IFrameTimeStamp { get { return iFrameTimeStamp; } }
@@ -61,6 +63,9 @@ public class Player : MonoBehaviour {
         //Demon Control
         demonMove = Vector3.zero;
         demonAngleMove = 0;
+        demonControlTimer = Time.time;
+        demonEffectRenderer = Camera.main.transform.Find("CameraEffect").GetComponent<SpriteRenderer>();
+        demonOn = false;
 
         //  Stats
         health = maxHealth;
@@ -72,7 +77,12 @@ public class Player : MonoBehaviour {
 
     void Update() {
         Rotate();
-        HandleMovement();
+        if (!AOEStop)
+            HandleMovement();
+        else if (isRunning){
+            animator.SetBool("isRunning", false);
+            isRunning = false;
+        }
         UpdateHealth();
         UpdateControl();
     }
@@ -81,7 +91,7 @@ public class Player : MonoBehaviour {
     /// Rotate Dresden's staff
     /// </summary>
     private void Rotate() {
-        if (control < 75)
+        if (!demonOn || control < 75)
         {
             flag = false;
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -143,7 +153,7 @@ public class Player : MonoBehaviour {
             velocity += Vector3.right * speedMod;
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-        if (control >= 25)
+        if (demonOn && control >= 25)
         {
             if (demonMove == Vector3.zero)
             {
@@ -171,10 +181,9 @@ public class Player : MonoBehaviour {
         transform.position = wallCollider.transform.position;
         wallCollider.transform.position = transform.position;
 
-
         if (velocity.magnitude > 0)
         {
-            if (!isRunning)
+            if (!isRunning )
             {
                 animator.SetBool("isRunning", true);
                 isRunning = true;
@@ -205,11 +214,32 @@ public class Player : MonoBehaviour {
     /// <summary>
     /// Control update
     /// </summary>
-    private void UpdateControl() {
+    private void UpdateControl()
+    {
         controlBar.transform.localScale = new Vector3
             (control / maxControl, 
             controlBar.transform.localScale.y,
             controlBar.transform.localScale.z);
+        if (control > bufferPoint)//checks to see if the demon has any control over the player
+        {
+            if (10.0f + 5.0f * (control / maxControl) > Time.time % 20.0f)
+            {
+                if (!coroutineOn)
+                {
+                    StartCoroutine(DemonEffectFade(175.0f / 255.0f));
+                    demonOn = true;
+                }
+            }
+            else
+            {
+                if (!coroutineOn)
+                {
+                    StartCoroutine(DemonEffectFade(0));
+                    demonOn = false;
+                }
+            }
+        }
+
     }
 
     /// <summary>
@@ -265,5 +295,26 @@ public class Player : MonoBehaviour {
         }
 
         Debug.Log("Control Amount: " + control);
+    }
+
+
+    private IEnumerator DemonEffectFade(float targetOpacity)
+    {
+        coroutineOn = true;
+        while (demonEffectRenderer.color.a != targetOpacity)
+        {
+            yield return new WaitForSeconds(0.001f);
+            if (targetOpacity == 0)
+            {
+                if (demonEffectRenderer.color.a < 0) demonEffectRenderer.color = new Color(255, 255, 255, 0);
+                else demonEffectRenderer.color = new Color(255, 255, 255, (demonEffectRenderer.color.a * 255.0f - 2.5f) / 255.0f);
+            }
+            else
+            {
+                if (demonEffectRenderer.color.a > targetOpacity) demonEffectRenderer.color = new Color(255, 255, 255, targetOpacity);
+                else demonEffectRenderer.color = new Color(255, 255, 255, (demonEffectRenderer.color.a * 255.0f + 2.5f) / 255.0f);
+            }
+        }
+        coroutineOn = false;
     }
 }
