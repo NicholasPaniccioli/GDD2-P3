@@ -432,7 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragForce: 0.8
   maxSpeed: 3
-  speedMod: 1.5
+  speedMod: 2.5
   maxHealth: 100
   maxControl: 100
   bufferPoint: 25
